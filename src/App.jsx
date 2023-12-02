@@ -3,6 +3,7 @@ import RegisterCompany from "./pages/AuthCompany/Register";
 import LoginCompany from "./pages/AuthCompany/Login";
 import RegisterWorker from "./pages/AuthWorker/Register";
 import LoginWorker from "./pages/AuthWorker/Login";
+import PageEditCompany from "./pages/PageEditCompany/PageEditCompany";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/login-company" element={<LoginCompany />} />
         <Route path="/register-worker" element={<RegisterWorker />} />
         <Route path="/login-worker" element={<LoginWorker />} />
+        <Route path="/edit-company" element={<PageEditCompany />} />
       </Routes>
     </Router>
   );
