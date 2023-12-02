@@ -5,8 +5,8 @@ import LocationIcon from "../../assets/img/lokasi.svg";
 export default function EditPhotoProfile() {
   return (
     <section>
-      <div className="wrapper-edit mt-[-200px] ml-20">
-        <div className="container-edit-profile px-8 mx-9 bg-white w-[400px] shadow-lg rounded-md">
+      <div className="wrapper-edit">
+        <div className="container-edit-profile px-8  bg-white w-[400px] shadow-lg rounded-md">
           <div className="flex flex-col justify-center items-center pb-10 ">
             <button className=" text-white p-2 flex items-baseline gap-3 ">
               <img src={EditPencil} alt="icon" />
@@ -23,7 +23,7 @@ export default function EditPhotoProfile() {
             </div>
           </div>
         </div>
-        <div className="btn-edit mx-9 mt-4 flex flex-col mb-11 gap-4">
+        <div className="btn-edit mt-4 flex flex-col mb-11 gap-4">
           <button className="w-[400px] bg-[#5E50A1]  p-3 rounded-md text-white">Simpan</button>
           <button className="w-[400px] border-2 border-[#5E50A1] bg-white  p-3 rounded-md text-[#5E50A1]">Batal</button>
         </div>

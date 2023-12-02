@@ -3,11 +3,9 @@ import RegisterCompany from "./pages/AuthCompany/Register";
 import LoginCompany from "./pages/AuthCompany/Login";
 import RegisterWorker from "./pages/AuthWorker/Register";
 import LoginWorker from "./pages/AuthWorker/Login";
-<<<<<<< HEAD
 import PageEditCompany from "./pages/PageEditCompany/PageEditCompany";
-=======
 import HomeLandingPage from "./pages/HomePage/PagesLanding";
->>>>>>> e2e29adefdca527ce57b138f6768bb265ac62e1a
+import PageEditWorker from "./pages/PageEditWorker/PageEditWorker";
 
 const App = () => {
   return (
@@ -17,11 +15,9 @@ const App = () => {
         <Route path="/login-company" element={<LoginCompany />} />
         <Route path="/register-worker" element={<RegisterWorker />} />
         <Route path="/login-worker" element={<LoginWorker />} />
-<<<<<<< HEAD
         <Route path="/edit-company" element={<PageEditCompany />} />
-=======
+        <Route path="/edit-worker" element={<PageEditWorker />} />
         <Route path="/landing-home" element={<HomeLandingPage />} />
->>>>>>> e2e29adefdca527ce57b138f6768bb265ac62e1a
       </Routes>
     </Router>
   );
