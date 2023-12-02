@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-export default function App() {
-  return <h1 className="text-3xl font-bold underline text-blue-400">Hello world!</h1>;
-}
-=======
+// <<<<<<< HEAD
+// export default function App() {
+//   return <h1 className="text-3xl font-bold underline text-blue-400">Hello world!</h1>;
+// }
+// =======
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RegisterCompany from "./pages/AuthCompany/Register";
 import LoginCompany from "./pages/AuthCompany/Login";
@@ -29,4 +29,4 @@ const App = () => {
 };
 
 export default App;
->>>>>>> 21a4203ca5f5e17657d2232625f39e3146457c34
+// >>>>>>> 21a4203ca5f5e17657d2232625f39e3146457c34

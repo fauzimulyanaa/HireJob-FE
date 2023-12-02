@@ -1,3 +1,4 @@
+import Footer from "../elements/Footer"
 import PageHome from "../elements/PageLanding"
 
 export default function HomeLanding(){
@@ -5,6 +6,7 @@ export default function HomeLanding(){
         <>
         <div className="container">
             <PageHome />
+            <Footer />
         </div>
         </>
     )
