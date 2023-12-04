@@ -3,7 +3,7 @@
 //   return <h1 className="text-3xl font-bold underline text-blue-400">Hello world!</h1>;
 // }
 // =======
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Navigate, BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RegisterCompany from "./pages/AuthCompany/Register";
 import LoginCompany from "./pages/AuthCompany/Login";
 import RegisterWorker from "./pages/AuthWorker/Register";
@@ -16,6 +16,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path='/' element={<Navigate to='/landing-home' replace={true} />}/>
         <Route path="/register-company" element={<RegisterCompany />} />
         <Route path="/login-company" element={<LoginCompany />} />
         <Route path="/register-worker" element={<RegisterWorker />} />

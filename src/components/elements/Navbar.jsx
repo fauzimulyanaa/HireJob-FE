@@ -6,20 +6,28 @@ import Profile from "../../assets/img/profile.png";
 export default function Navbar() {
   return (
     <>
-      <header className=" py-5 px-28 w-full  bg-white">
-        <nav className="flex justify-between w-full">
-          <div className="logo">
-            <img src={Logo} alt="logo" />
-          </div>
-          <div className="icon-profile flex gap-10">
-            <img src={Email} alt="email logo" />
-            <img src={Bell} alt="bell logo" />
-            <img src={Profile} alt="profile logo" className="rounded-full" />
-          </div>
-        </nav>
-      </header>
       <section>
-        <div className="hero bg-[#5E50A1] h-72"></div>
+          <nav className="bg-white w-screen">
+            <div className="content flex justify-between mx-10 py-3">
+            <div className="logo">
+              <img src={Logo} />
+            </div>
+            <div className="icon flex space-x-5">
+              <a href=""><img src={Bell}  /></a>
+              <a href=""><img src={Email}  /></a>
+              <div className="profiles">
+                <img className="rounded-full" src={Profile} />
+              </div>
+            </div>
+            </div>
+          </nav>
+      </section>
+      <section>
+        <header className="bg-violet-700 w-screen">
+          <div className="title p-4 mx-10 py-3">
+            <p className="text-white font-bold">Top Jobs</p>
+          </div>
+        </header>
       </section>
     </>
   );
