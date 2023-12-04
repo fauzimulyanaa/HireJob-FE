@@ -1,8 +1,3 @@
-// <<<<<<< HEAD
-// export default function App() {
-//   return <h1 className="text-3xl font-bold underline text-blue-400">Hello world!</h1>;
-// }
-// =======
 import { Navigate, BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RegisterCompany from "./pages/AuthCompany/Register";
 import LoginCompany from "./pages/AuthCompany/Login";
@@ -11,12 +6,16 @@ import LoginWorker from "./pages/AuthWorker/Login";
 import PageEditCompany from "./pages/PageEditCompany/PageEditCompany";
 import HomeLandingPage from "./pages/HomePage/PagesLanding";
 import PageEditWorker from "./pages/PageEditWorker/PageEditWorker";
+import ProfileWorker from "./pages/ProfileWorker/Profile";
+import PageResetPassword from "./pages/ResetPassword/PageResetPassword";
+import PageSendOtp from "./pages/ResetPassword/PageSendOtp";
+import PageNewPassword from "./pages/ResetPassword/PageNewPassword";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Navigate to='/landing-home' replace={true} />}/>
+        <Route path="/" element={<Navigate to="/landing-home" replace={true} />} />
         <Route path="/register-company" element={<RegisterCompany />} />
         <Route path="/login-company" element={<LoginCompany />} />
         <Route path="/register-worker" element={<RegisterWorker />} />
@@ -24,10 +23,13 @@ const App = () => {
         <Route path="/edit-company" element={<PageEditCompany />} />
         <Route path="/edit-worker" element={<PageEditWorker />} />
         <Route path="/landing-home" element={<HomeLandingPage />} />
+        <Route path="/profile" element={<ProfileWorker />} />
+        <Route path="/reset-password" element={<PageResetPassword />} />
+        <Route path="/send-otp" element={<PageSendOtp />} />
+        <Route path="/new-password" element={<PageNewPassword />} />
       </Routes>
     </Router>
   );
 };
 
 export default App;
-// >>>>>>> 21a4203ca5f5e17657d2232625f39e3146457c34
