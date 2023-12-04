@@ -1,6 +1,6 @@
 import EditPhotoProfile from '../elements/EditPhotoCompany';
 import Footer from '../elements/Footer';
-import Navbar from '../elements/Navbar';
+import Navbar from '../elements/NavbarLanding';
 
 export default function EditCompany() {
   return (

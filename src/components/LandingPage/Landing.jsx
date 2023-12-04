@@ -1,5 +1,5 @@
 import Footer from "../elements/Footer"
-import Navbar from "../elements/Navbar"
+import Navbar from "../elements/NavbarLanding"
 import PageHome from "../elements/PageLanding"
 
 export default function HomeLanding(){
