@@ -11,6 +11,7 @@ import LoginWorker from "./pages/AuthWorker/Login";
 import PageEditCompany from "./pages/PageEditCompany/PageEditCompany";
 import HomeLandingPage from "./pages/HomePage/PagesLanding";
 import PageEditWorker from "./pages/PageEditWorker/PageEditWorker";
+import PagesChat from "./pages/ChatTable/PagesChat"
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/edit-company" element={<PageEditCompany />} />
         <Route path="/edit-worker" element={<PageEditWorker />} />
         <Route path="/landing-home" element={<HomeLandingPage />} />
+        <Route path="/chat-page" element={<PagesChat />} />
       </Routes>
     </Router>
   );
