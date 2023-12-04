@@ -1,7 +1,7 @@
 import EditPhotoProfile from "../elements/EditPhotoWorker";
 import EditProfileForm from "../elements/EditProfileFormWorker";
 import Footer from "../elements/Footer";
-import Navbar from "../elements/NavbarLanding";
+import Navbar from "../elements/NavbarEdit";
 
 export default function EditWorker() {
   return (
