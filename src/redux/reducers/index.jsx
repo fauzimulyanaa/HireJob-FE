@@ -5,6 +5,8 @@ import AuthLoginWorker from './AuthLoginWorker';
 import AuthRegisterWorker from './AuthRegisterWorker';
 import detailProfileCompany from './DetailProfileCompany';
 import editProfileCompany from './EditProfileCompany';
+import showWorker from './ShowWorker';
+import showSkillWorker from './ShowSkillWorker';
 
 const rootReducers = combineReducers({
   AuthRegisterCompany,
@@ -13,6 +15,8 @@ const rootReducers = combineReducers({
   AuthLoginWorker,
   detailProfileCompany,
   editProfileCompany,
+  showWorker,
+  showSkillWorker,
 });
 
 export default rootReducers;

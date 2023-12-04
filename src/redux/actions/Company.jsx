@@ -42,3 +42,35 @@ export const updateProfileCompany = (bodyData) => async (dispatch, getState) => 
     dispatch({ payload: err.message, type: 'UPDATE_PROFILE_COMPANY_ERROR' });
   }
 };
+
+export const getAllWorker = (keyword, sort, page, limit) => async (dispatch, getState) => {
+  let workerUrl = `/users/pekerja/by-skill?page=${page}&limit=${limit}&search=${keyword}&sort=${sort}`;
+  try {
+    dispatch({ type: 'GET_WORKER_PENDING' });
+    let token = await getState().AuthLoginCompany.data.token;
+    const result = await axios.get(base_url + workerUrl, {
+      headers: {
+        token,
+      },
+    });
+    dispatch({ payload: result.data, type: 'GET_WORKER_SUCCESS' });
+  } catch (err) {
+    dispatch({ payload: err.message, type: 'GET_WORKER_ERROR' });
+  }
+};
+
+export const getSkillAllWorker = () => async (dispatch, getState) => {
+  let skillWorkerUrl = `/skill/pekerja`;
+  try {
+    dispatch({ type: 'GET_SKILL_WORKER_PENDING' });
+    let token = await getState().AuthLoginCompany.data.token;
+    const result = await axios.get(base_url + skillWorkerUrl, {
+      headers: {
+        token,
+      },
+    });
+    dispatch({ payload: result.data, type: 'GET_SKILL_WORKER_SUCCESS' });
+  } catch (err) {
+    dispatch({ payload: err.message, type: 'GET_SKILL_WORKER_ERROR' });
+  }
+};
