@@ -13,11 +13,20 @@ export default function PageHome() {
       {/* form pencarian */}
 
       <section>
-        <div className="container mx-auto bg-white w-5/6">
-        <form className="flex w-5/6 mx-auto mt-10">
-        <input type="search" id="default-search" className="block w-full p-4 text-sm text-gray-900 outline-none" placeholder="Search for any skill" />
-        <button type="submit" className="text-gray rounded">Sort</button>
-        <button type="submit" className="text-white bg-violet-700 rounded p-2 my-3">Search</button>
+        <div className="container w-5/6 mx-auto bg-white">
+        <form className="flex mt-10">
+        <input type="search" id="default-search" className="w-screen p-4 text-sm text-gray-900 outline-none" placeholder="Search for any skill" />
+        <div className="search ms-auto flex">
+        <div className="relative w-full lg:max-w-sm my-2 p-2">
+            <select className="w-full p-2.5 text-gray-500 bg-white rounded-md outline-none appearance-none focus:border-indigo-600 text-center">
+                <option>Sort</option>
+                <option>Laravel 9 with React</option>
+                <option>React with Tailwind CSS</option>
+                <option>React With Headless UI</option>
+            </select>
+        </div>
+        <button type="submit" className="text-white bg-violet-700 rounded p-2 my-3 me-3">Search</button>
+        </div>
         </form>
 
         </div>
