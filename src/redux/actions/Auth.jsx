@@ -1,5 +1,5 @@
-import axios from "axios";
-import Swal from "sweetalert2";
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
@@ -15,25 +15,25 @@ export const registerCompanyAction = (nama, email, perusahaan, jabatan, phone, p
     confPassword,
   };
   try {
-    dispatch({ type: "AUTH_REGISTER_PENDING" });
+    dispatch({ type: 'AUTH_REGISTER_PENDING' });
     const result = await axios.post(base_url + registerUrl, bodyData, {
       headers: {
-        "content-type": "application/x-www-form-urlencoded",
+        'content-type': 'application/x-www-form-urlencoded',
       },
     });
-    dispatch({ payload: result.data, type: "AUTH_REGISTER_SUCCESS" });
+    dispatch({ payload: result.data, type: 'AUTH_REGISTER_SUCCESS' });
     Swal.fire({
-      title: "Success!",
+      title: 'Success!',
       text: result.data.message,
-      icon: "success",
+      icon: 'success',
     });
-    navigate("/login-company");
+    navigate('/login-company');
   } catch (err) {
-    dispatch({ payload: err.response.data, type: "AUTH_REGISTER_ERROR" });
+    dispatch({ payload: err.response.data, type: 'AUTH_REGISTER_ERROR' });
     Swal.fire({
-      title: "Failed!",
+      title: 'Failed!',
       text: `error :  ${err.response.data.messsage || err.response.data.message} `,
-      icon: "error",
+      icon: 'error',
     });
   }
 };
@@ -45,26 +45,27 @@ export const loginActionCompany = (email, password, navigate) => async (dispatch
     password,
   };
   try {
-    dispatch({ type: "AUTH_LOGIN_PENDING" });
+    dispatch({ type: 'AUTH_LOGIN_PENDING' });
     const result = await axios.post(base_url + loginUrl, bodyData, {
       headers: {
-        "content-type": "application/x-www-form-urlencoded",
+        'content-type': 'application/x-www-form-urlencoded',
       },
     });
-    dispatch({ payload: result.data, type: "AUTH_LOGIN_SUCCESS" });
+    dispatch({ payload: result.data, type: 'AUTH_LOGIN_SUCCESS' });
+    localStorage.setItem('status', 'company');
     Swal.fire({
-      title: "Success!",
+      title: 'Success!',
       text: result.data.message,
-      icon: "success",
+      icon: 'success',
     });
 
-    navigate("/edit-company");
+    navigate('/edit-company');
   } catch (err) {
-    dispatch({ payload: err.response.data, type: "AUTH_LOGIN_ERROR" });
+    dispatch({ payload: err.response.data, type: 'AUTH_LOGIN_ERROR' });
     Swal.fire({
-      title: "Failed!",
+      title: 'Failed!',
       text: `error :  ${err.response.data.messsage || err.response.data.message} `,
-      icon: "error",
+      icon: 'error',
     });
   }
 };
@@ -79,25 +80,25 @@ export const registerWorkerAction = (nama, email, phone, password, confPassword,
     confPassword,
   };
   try {
-    dispatch({ type: "AUTH_REGISTER_WORKER_PENDING" });
+    dispatch({ type: 'AUTH_REGISTER_WORKER_PENDING' });
     const result = await axios.post(base_url + registerUrl, bodyData, {
       headers: {
-        "content-type": "application/x-www-form-urlencoded",
+        'content-type': 'application/x-www-form-urlencoded',
       },
     });
-    dispatch({ payload: result.data, type: "AUTH_REGISTER_WORKER_SUCCESS" });
+    dispatch({ payload: result.data, type: 'AUTH_REGISTER_WORKER_SUCCESS' });
     Swal.fire({
-      title: "Success!",
+      title: 'Success!',
       text: result.data.message,
-      icon: "success",
+      icon: 'success',
     });
-    navigate("/login-worker");
+    navigate('/login-worker');
   } catch (err) {
-    dispatch({ payload: err.response.data, type: "AUTH_REGISTER__WORKER_ERROR" });
+    dispatch({ payload: err.response.data, type: 'AUTH_REGISTER__WORKER_ERROR' });
     Swal.fire({
-      title: "Failed!",
+      title: 'Failed!',
       text: `error :  ${err.response.data.messsage || err.response.data.message} `,
-      icon: "error",
+      icon: 'error',
     });
   }
 };
@@ -109,26 +110,27 @@ export const loginActionWorker = (email, password, navigate) => async (dispatch)
     password,
   };
   try {
-    dispatch({ type: "AUTH_LOGIN__WROKER_PENDING" });
+    dispatch({ type: 'AUTH_LOGIN__WROKER_PENDING' });
     const result = await axios.post(base_url + loginUrl, bodyData, {
       headers: {
-        "content-type": "application/x-www-form-urlencoded",
+        'content-type': 'application/x-www-form-urlencoded',
       },
     });
-    dispatch({ payload: result.data, type: "AUTH_LOGIN__WORKER_SUCCESS" });
+    dispatch({ payload: result.data, type: 'AUTH_LOGIN__WORKER_SUCCESS' });
+    localStorage.setItem('status', 'worker');
     Swal.fire({
-      title: "Success!",
+      title: 'Success!',
       text: result.data.message,
-      icon: "success",
+      icon: 'success',
     });
 
-    navigate("/edit-company");
+    navigate('/edit-worker');
   } catch (err) {
-    dispatch({ payload: err.response.data, type: "AUTH_LOGIN_WORKER_ERROR" });
+    dispatch({ payload: err.response.data, type: 'AUTH_LOGIN_WORKER_ERROR' });
     Swal.fire({
-      title: "Failed!",
+      title: 'Failed!',
       text: `error :  ${err.response.data.messsage || err.response.data.message} `,
-      icon: "error",
+      icon: 'error',
     });
   }
 };
