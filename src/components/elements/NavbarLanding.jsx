@@ -3,7 +3,7 @@ import Email from "../../assets/img/email.svg";
 import Bell from "../../assets/img/bell.svg";
 import Profile from "../../assets/img/profile.png";
 
-export default function Navbar() {
+export default function NavbarHome() {
   return (
     <>
       <section>
