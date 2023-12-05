@@ -24,7 +24,7 @@ const App = () => {
         <Route path="/edit-company" element={<PageEditCompany />} />
         <Route path="/edit-worker" element={<PageEditWorker />} />
         <Route path="/landing-home" element={<HomeLandingPage />} />
-        <Route path="/profile" element={<ProfileWorker />} />
+        <Route path="/profile/:id" element={<ProfileWorker />} />
         <Route path="/reset-password" element={<PageResetPassword />} />
         <Route path="/send-otp" element={<PageSendOtp />} />
         <Route path="/new-password" element={<PageNewPassword />} />
