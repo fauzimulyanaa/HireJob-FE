@@ -4,8 +4,19 @@ import Mail from "../../assets/img/mail (4).svg";
 import Github from "../../assets/img/github.svg";
 import Gitlab from "../../assets/img/gitlab.svg";
 import Instagram from "../../assets/img/instagram.svg";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { getDetailProfileWorker } from "../../redux/actions/Worker";
 
-export default function EditPhotoProfile() {
+export default function CardDetailProfile() {
+  const dispatch = useDispatch();
+  const detailProfileWorker = useSelector((state) => state.detailProfileWorker);
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getDetailProfileWorker(id));
+  }, [dispatch, id]);
   return (
     <section>
       <div className="wrapper-edit ">
@@ -13,7 +24,7 @@ export default function EditPhotoProfile() {
           <div className="flex flex-col justify-center items-center pb-10 ">
             <img src={PhotoEdit} alt="Foto Profil" className="rounded-full mt-6" />
             <div className="desc mt-10 w-full pl-4">
-              <h1 className="text-2xl mb-2">Louis Tomlinson</h1>
+              <h1 className="text-2xl mb-2">{detailProfileWorker.data.result.nama}</h1>
               <p className="text-[#1F2A36] mb-2 text-[15px]">Web Developer</p>
               <div className="location flex gap-3 mb-2">
                 <img src={LocationIcon} alt="Location Icon" />

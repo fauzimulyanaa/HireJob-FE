@@ -140,6 +140,13 @@ export default function EditProfileFormWorker() {
                   placeholder="Tuliskan deskripsi singkat"
                 />
               </div>
+              <div className="mb-4">
+                <label htmlFor="photo" className="block text-sm font-medium text-gray-600">
+                  Select Photo
+                </label>
+                <input type="file" id="photo" name="photo" accept="image/*" className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+              </div>
+
               <hr></hr>
               <div className="btn-pengalaman-kerja mt-6">
                 <button type="submit" className="border-2 border-[#FBB017] w-full text-[#FBB017] p-3 rounded-md">
