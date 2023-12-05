@@ -3,11 +3,11 @@ import Email from "../../assets/img/email.svg";
 import Bell from "../../assets/img/bell.svg";
 import Profile from "../../assets/img/profile.png";
 
-export default function NavbarHome() {
+export default function NavbarHireChat() {
   return (
     <>
       <section>
-          <nav className="bg-white w-screen">
+          <nav className="bg-white w-screen shadow-2xl">
             <div className="content flex justify-between mx-10 py-3">
             <div className="logo">
               <img src={Logo} />
@@ -21,13 +21,6 @@ export default function NavbarHome() {
             </div>
             </div>
           </nav>
-      </section>
-      <section>
-        <header className="bg-violet-700 w-screen">
-          <div className="title p-4 mx-10 py-3">
-            <p className="text-white font-bold">Top Jobs</p>
-          </div>
-        </header>
       </section>
     </>
   );
