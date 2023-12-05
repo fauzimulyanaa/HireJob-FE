@@ -63,7 +63,7 @@ export default function PageHome() {
       {/* card profiles */}
 
       <section>
-        {showWorker.data.result?.map((items) => {
+        {showWorker?.data?.result?.map((items) => {
           return (
             <div className='dataProfile flex w-5/6 mt-10 mx-auto bg-white p-5 mb-10' key={items.id_user}>
               <div className='user'>
@@ -95,7 +95,7 @@ export default function PageHome() {
           );
         })}
       </section>
-      <Paginatons currentPage={showWorker.data.pagination?.currentPage} totalPage={showWorker.data.pagination?.totalPage} totalRows={showWorker.data.pagination?.totalRows} setPage={setPage} />
+      <Paginatons currentPage={showWorker?.data?.pagination?.currentPage} totalPage={showWorker?.data?.pagination?.totalPage} totalRows={showWorker?.data?.pagination?.totalRows} setPage={setPage} />
     </>
   );
 }

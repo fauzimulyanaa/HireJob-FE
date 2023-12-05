@@ -7,6 +7,16 @@ import detailProfileCompany from './DetailProfileCompany';
 import editProfileCompany from './EditProfileCompany';
 import showWorker from './ShowWorker';
 import showSkillWorker from './ShowSkillWorker';
+import detailProfileWorker from './DetailProfileWorker';
+import showSkillByIdWorker from './showSkillByIdWorker';
+import editProfileWorker from './EditProfileWorker';
+import addSkillWorker from './AddSkillWorker';
+import deleteSkillWork from './DeleteSkillWorker';
+import showPortfolioWorker from './ShowPortfolioWorker';
+import addPortfolioWorker from './AddPortfolioWorker';
+import deletePortfolioWorker from './DeletePortfolioWorker';
+import showDetailPortfolioWorker from './showDetailPortfolioWorker';
+import updatePortfolioWorker from './UpdatePortfolioWorker';
 
 const rootReducers = combineReducers({
   AuthRegisterCompany,
@@ -17,6 +27,16 @@ const rootReducers = combineReducers({
   editProfileCompany,
   showWorker,
   showSkillWorker,
+  detailProfileWorker,
+  showSkillByIdWorker,
+  editProfileWorker,
+  addSkillWorker,
+  deleteSkillWork,
+  showPortfolioWorker,
+  addPortfolioWorker,
+  deletePortfolioWorker,
+  showDetailPortfolioWorker,
+  updatePortfolioWorker,
 });
 
 export default rootReducers;
