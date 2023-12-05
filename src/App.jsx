@@ -6,15 +6,15 @@ import LoginWorker from "./pages/AuthWorker/Login";
 import PageEditCompany from "./pages/PageEditCompany/PageEditCompany";
 import HomeLandingPage from "./pages/HomePage/PagesLanding";
 import PageEditWorker from "./pages/PageEditWorker/PageEditWorker";
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import PagesChat from "./pages/ChatTable/PagesChat"
-=======
+// =======
 import ProfileWorker from "./pages/ProfileWorker/Profile";
 import PageResetPassword from "./pages/ResetPassword/PageResetPassword";
 import PageSendOtp from "./pages/ResetPassword/PageSendOtp";
 import PageNewPassword from "./pages/ResetPassword/PageNewPassword";
 import PageHomeUtama from "./pages/HomeUtama/PageHomeUtama";
->>>>>>> 1566146b75914e55a32b9711f4564bf45297bb79
+// >>>>>>> 1566146b75914e55a32b9711f4564bf45297bb79
 
 const App = () => {
   return (
@@ -28,15 +28,15 @@ const App = () => {
         <Route path="/edit-company" element={<PageEditCompany />} />
         <Route path="/edit-worker" element={<PageEditWorker />} />
         <Route path="/landing-home" element={<HomeLandingPage />} />
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
         <Route path="/chat-page" element={<PagesChat />} />
-=======
+{/* ======= */}
         <Route path="/profile" element={<ProfileWorker />} />
         <Route path="/reset-password" element={<PageResetPassword />} />
         <Route path="/send-otp" element={<PageSendOtp />} />
         <Route path="/new-password" element={<PageNewPassword />} />
         <Route path="/home" element={<PageHomeUtama />} />
->>>>>>> 1566146b75914e55a32b9711f4564bf45297bb79
+{/* >>>>>>> 1566146b75914e55a32b9711f4564bf45297bb79 */}
       </Routes>
     </Router>
   );
