@@ -40,6 +40,9 @@ export default function EditPhotoProfile() {
 
   useEffect(() => {
     dispatch(getDetailProfileCompany(AuthLoginCompany.data?.id_user));
+  }, []);
+
+  useEffect(() => {
     setForm({
       ...form,
       photo: detailProfileCompany.data?.photo,
@@ -53,8 +56,7 @@ export default function EditPhotoProfile() {
       phone: detailProfileCompany.data?.phone,
       linked_in: detailProfileCompany.data?.linked_in,
     });
-    console.log('ini form', form);
-  }, []);
+  }, [detailProfileCompany]);
 
   const onChangePhoto = (e) => {
     setPhoto(e.target.files[0]);

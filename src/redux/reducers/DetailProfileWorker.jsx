@@ -6,13 +6,13 @@ const initialState = {
   errorMessage: '',
 };
 
-const authLoginWorker = (state = initialState, action) => {
-  if (action.type === 'AUTH_LOGIN_WORKER_PENDING') {
+const detailProfileWrokerReducers = (state = initialState, action) => {
+  if (action.type === 'GET_DETAIL_PROFILE_WORKER_PENDING') {
     return {
       ...state,
       isLoading: true,
     };
-  } else if (action.type === 'AUTH_LOGIN_WORKER_SUCCESS') {
+  } else if (action.type === 'GET_DETAIL_PROFILE_WORKER_SUCCESS') {
     return {
       ...state,
       isLoading: false,
@@ -20,7 +20,7 @@ const authLoginWorker = (state = initialState, action) => {
       isError: false,
       data: action.payload,
     };
-  } else if (action.type === 'AUTH_LOGIN_WORKER_ERROR') {
+  } else if (action.type === 'GET_DETAIL_PROFILE_WORKER_ERROR') {
     return {
       ...state,
       isLoading: false,
@@ -28,18 +28,9 @@ const authLoginWorker = (state = initialState, action) => {
       isError: true,
       errorMessage: action.payload,
     };
-  } else if (action.type === 'AUTH_LOGOUT') {
-    return {
-      ...state,
-      data: null,
-      isError: false,
-      isSuccess: false,
-      isLoading: false,
-      errorMessage: '',
-    };
   } else {
     return state;
   }
 };
 
-export default authLoginWorker;
+export default detailProfileWrokerReducers;
