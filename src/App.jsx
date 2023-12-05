@@ -10,6 +10,7 @@ import ProfileWorker from "./pages/ProfileWorker/Profile";
 import PageResetPassword from "./pages/ResetPassword/PageResetPassword";
 import PageSendOtp from "./pages/ResetPassword/PageSendOtp";
 import PageNewPassword from "./pages/ResetPassword/PageNewPassword";
+import PageHomeUtama from "./pages/HomeUtama/PageHomeUtama";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/reset-password" element={<PageResetPassword />} />
         <Route path="/send-otp" element={<PageSendOtp />} />
         <Route path="/new-password" element={<PageNewPassword />} />
+        <Route path="/home" element={<PageHomeUtama />} />
       </Routes>
     </Router>
   );
