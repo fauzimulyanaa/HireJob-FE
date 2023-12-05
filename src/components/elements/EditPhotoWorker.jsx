@@ -7,7 +7,7 @@ import LocationIcon from '../../assets/img/lokasi.svg';
 import Cloud from '../../assets/img/cloud.svg';
 import Expand from '../../assets/img/expand.svg';
 import Example from '../../assets/img/example-image.svg';
-import IconPerusahaan from '../../assets/img/icon-perusahaan.png';
+// import IconPerusahaan from '../../assets/img/icon-perusahaan.png';
 // import ImagePortofolio from '../../assets/img/dummy.png';
 
 import {
@@ -21,6 +21,11 @@ import {
   deletePortfolioWorkerAction,
   getDetailPortfolioWorker,
   updatePortfolioWorkerAction,
+  getExperienceWorkerAction,
+  postExperienceAction,
+  deleteExperienceWorkerAction,
+  getDetailExperienceWorker,
+  updateExperienceWorkerAction,
 } from '../../redux/actions/Worker';
 
 export default function EditPhotoProfile() {
@@ -35,6 +40,11 @@ export default function EditPhotoProfile() {
   const showDetailPortfolioWorker = useSelector((state) => state.showDetailPortfolioWorker);
   const updatePortfolioWorker = useSelector((state) => state.updatePortfolioWorker);
   const deletePortfolioWorker = useSelector((state) => state.deletePortfolioWorker);
+  const showExperienceWorker = useSelector((state) => state.showExperienceWorker);
+  const addExperienceWorker = useSelector((state) => state.addExperienceWorker);
+  const deleteExperienceWorker = useSelector((state) => state.deleteExperienceWorker);
+  const showDetailExperienceWorker = useSelector((state) => state.showDetailExperienceWorker);
+  const updateExperienceWorker = useSelector((state) => state.updateExperienceWorker);
 
   if (editProfileWorker.isLoading) {
     Swal.fire({
@@ -60,7 +70,31 @@ export default function EditPhotoProfile() {
     });
   }
 
+  if (updateExperienceWorker.isLoading) {
+    Swal.fire({
+      title: 'Updating...',
+      html: 'Please wait...',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+  }
+
   if (deletePortfolioWorker.isLoading) {
+    Swal.fire({
+      title: 'Deleting...',
+      html: 'Please wait...',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+  }
+
+  if (deleteExperienceWorker.isLoading) {
     Swal.fire({
       title: 'Deleting...',
       html: 'Please wait...',
@@ -84,6 +118,18 @@ export default function EditPhotoProfile() {
     });
   }
 
+  if (addExperienceWorker.isLoading) {
+    Swal.fire({
+      title: 'Uploading...',
+      html: 'Please wait...',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+  }
+
   if (addPortfolioWorker.isLoading) {
     Swal.fire({
       title: 'Uploading...',
@@ -98,8 +144,10 @@ export default function EditPhotoProfile() {
 
   const [photo, setPhoto] = useState();
   const [photoPortfolio, setPhotoPortfolio] = useState(null);
+  const [photoExperience, setPhotoExperience] = useState(null);
   const [showCardUplodImage, setShowCardUplodImage] = useState(false);
   const [editPortfolio, setEditPortfolio] = useState(false);
+  const [editExperience, setEditExperience] = useState(false);
   const [form, setForm] = useState({
     photo: '',
     nama: '',
@@ -120,6 +168,15 @@ export default function EditPhotoProfile() {
     nama_aplikasi: '',
   });
 
+  const [formExperience, setFormExperience] = useState({
+    position: '',
+    company_name: '',
+    from_month: '',
+    to_month: '',
+    description: '',
+    photo: '',
+  });
+
   const inputRef = useRef();
 
   const onChangePhoto = (e) => {
@@ -135,10 +192,19 @@ export default function EditPhotoProfile() {
     console.log('ini daari change', formPortfolio);
   };
 
+  const onChangePhotoExperience = (e) => {
+    setPhotoExperience(e.target.files[0]);
+    setShowCardUplodImage(true);
+    e.target.files[0] && setFormExperience({ ...formExperience, photo: URL.createObjectURL(e.target.files[0]) });
+    console.log('ini daari change', formExperience);
+  };
+
   useEffect(() => {
     dispatch(getDetailProfileWorker(AuthLoginWorker.data?.id_user));
     dispatch(getSkillByIdWorker(AuthLoginWorker.data?.id_user));
     dispatch(getPortfolioWorkerAction());
+    dispatch(getDetailPortfolioWorker(null));
+    dispatch(getExperienceWorkerAction());
   }, []);
 
   useEffect(() => {
@@ -175,6 +241,18 @@ export default function EditPhotoProfile() {
     dispatch(postPortfolioAction(bodyData, setFormPortfolio));
   };
 
+  const postDataExperience = () => {
+    let bodyData = new FormData();
+    bodyData.append('photo', photoExperience);
+    bodyData.append('position', formExperience.position);
+    bodyData.append('company_name', formExperience.company_name);
+    bodyData.append('from_month', formExperience.from_month);
+    bodyData.append('to_month', formExperience.to_month);
+    bodyData.append('description', formExperience.description);
+
+    dispatch(postExperienceAction(bodyData, setFormExperience));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     Swal.fire({
@@ -201,6 +279,10 @@ export default function EditPhotoProfile() {
 
   const deletePortfolio = (id) => {
     dispatch(deletePortfolioWorkerAction(id, setFormPortfolio));
+  };
+
+  const deleteExperience = (id) => {
+    dispatch(deleteExperienceWorkerAction(id, setFormExperience));
   };
 
   const handleSubmitSkill = (event) => {
@@ -242,6 +324,26 @@ export default function EditPhotoProfile() {
     setEditPortfolio(false);
   };
 
+  const handleSubmitExperience = (event) => {
+    event.preventDefault();
+    Swal.fire({
+      icon: 'warning',
+      title: 'Confirmation',
+      text: 'Simpan?',
+      showCancelButton: true,
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Tidak',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        postDataExperience();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        return false;
+      }
+    });
+    // setEditPortfolio(false);
+  };
+
   const handleDeleteSkill = (id_skill) => {
     dispatch(deleteSkillWorkerAction(id_skill));
   };
@@ -265,6 +367,25 @@ export default function EditPhotoProfile() {
     });
   };
 
+  const handleDeleteExperience = (id) => {
+    event.preventDefault();
+    Swal.fire({
+      icon: 'warning',
+      title: 'Confirmation',
+      text: 'Hapus?',
+      showCancelButton: true,
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Tidak',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteExperience(id);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        return false;
+      }
+    });
+  };
+
   const handleEditPortfolio = (id) => {
     dispatch(getDetailPortfolioWorker(id));
     setFormPortfolio({
@@ -278,6 +399,21 @@ export default function EditPhotoProfile() {
     console.log('ini dari edit portfolio', formPortfolio);
   };
 
+  const handleEditExperience = (id) => {
+    dispatch(getDetailExperienceWorker(id));
+    setFormExperience({
+      ...formExperience,
+      position: showDetailExperienceWorker?.data?.position,
+      company_name: showDetailExperienceWorker?.data?.company_name,
+      from_month: showDetailExperienceWorker?.data?.from_month,
+      to_month: showDetailExperienceWorker?.data?.to_month,
+      description: showDetailExperienceWorker?.data?.description,
+      photo: showDetailExperienceWorker?.data?.photo,
+    });
+    setEditExperience(true);
+    console.log('ini dari edit portfolio', formExperience);
+  };
+
   const updatePortfolio = (event) => {
     event.preventDefault();
     let bodyData = new FormData();
@@ -286,7 +422,20 @@ export default function EditPhotoProfile() {
     bodyData.append('type', formPortfolio.type);
     bodyData.append('nama_aplikasi', formPortfolio.nama_aplikasi);
 
-    dispatch(updatePortfolioWorkerAction(bodyData, setFormPortfolio, showDetailPortfolioWorker?.data?.id));
+    dispatch(updatePortfolioWorkerAction(bodyData, setFormPortfolio, setEditPortfolio, showDetailPortfolioWorker?.data?.id));
+  };
+
+  const updateExperience = (event) => {
+    event.preventDefault();
+    let bodyData = new FormData();
+    bodyData.append('photo', photoExperience);
+    bodyData.append('position', formExperience.position);
+    bodyData.append('company_name', formExperience.company_name);
+    bodyData.append('from_month', formExperience.from_month);
+    bodyData.append('to_month', formExperience.to_month);
+    bodyData.append('description', formExperience.description);
+
+    dispatch(updateExperienceWorkerAction(bodyData, setFormExperience, setEditExperience, showDetailExperienceWorker?.data?.id));
   };
 
   const handleBatal = () => {
@@ -326,6 +475,28 @@ export default function EditPhotoProfile() {
     setShowCardUplodImage(true);
   };
 
+  const handleBatalUpdate = () => {
+    setEditPortfolio(false);
+    setFormPortfolio({
+      photo: '',
+      link_repo: '',
+      type: '',
+      nama_aplikasi: '',
+    });
+  };
+
+  const handleBatalUpdateExperience = () => {
+    setEditExperience(false);
+    setFormExperience({
+      position: '',
+      company_name: '',
+      from_month: '',
+      to_month: '',
+      description: '',
+      photo: '',
+    });
+  };
+
   return (
     <>
       <form className='flex w-full justify-evenly flex-wrap' onSubmit={handleSubmit}>
@@ -359,7 +530,7 @@ export default function EditPhotoProfile() {
           </div>
         </section>
       </form>
-      <section className='pb-56'>
+      <section className='pb-56 pr-[100px]'>
         <div className='form-edit-company'>
           <div className='wrapper-form bg-white w-[700px] p-10 rounded-lg h-[720px] shadow-xl'>
             <div className='hadline'>
@@ -488,56 +659,100 @@ export default function EditPhotoProfile() {
               <h1 className='text-3xl mb-4'>Pengalaman kerja</h1>
               <hr />
             </div>
-            <div className='card-pengalaman-kerja relative'>
-              <div className='wrapper-pengalaman-kerja flex gap-10 mt-12 mb-14'>
-                <img src={IconPerusahaan} alt='icon perusahaan' className='w-[60px] h-[60px]' />
-                <div className='desc-time text-[12px]'>
-                  <h4 className='text-lg'>Web Developer</h4>
-                  <h5 className='text-lg mb-1'>Tokopedia</h5>
-                  <div className='time flex text-[#9EA0A5] text-[14px] gap-3 mb-2'>
-                    <p>July 2019 - January 2020</p>
-                    <p>6 months</p>
+            {showExperienceWorker?.data?.map((items) => {
+              return (
+                <div className='card-pengalaman-kerja relative' key={items.id}>
+                  <div className='wrapper-pengalaman-kerja flex gap-10 mt-12 mb-14'>
+                    <img src={items.photo} alt='icon perusahaan' className='w-[100px] h-[100px]' />
+                    <div className='desc-time text-[12px]'>
+                      <h4 className='text-lg'>{items.position}</h4>
+                      <h5 className='text-lg mb-1'>{items.company_name}</h5>
+                      <div className='time flex text-[#9EA0A5] text-[14px] gap-3 mb-2'>
+                        <p>
+                          {items.from_month} - {items.to_month}
+                        </p>
+                        {/* <p>6 months</p> */}
+                      </div>
+                      <div className='desc-diri'>
+                        <p className='text-[12px]'>{items.description}</p>
+                      </div>
+                    </div>
+                    <div className='wrapper-btn flex absolute right-0 top-[-30px] gap-5'>
+                      <button type='submit' className='w-[70px] bg-[#FBB017] text-white p-1 rounded-md' onClick={() => handleEditExperience(items.id)}>
+                        Edit
+                      </button>
+                      <button type='submit' className='w-[40px] bg-[#DB3022] text-white rounded-md' onClick={() => handleDeleteExperience(items.id)}>
+                        x
+                      </button>
+                    </div>
                   </div>
-                  <div className='desc-diri'>
-                    <p className='text-[12px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
-                  </div>
+                  <hr></hr>
                 </div>
-                <div className='wrapper-btn flex absolute right-0 top-[-30px] gap-5'>
-                  <button type='submit' className='w-[70px] bg-[#FBB017] text-white p-1 rounded-md'>
-                    Edit
-                  </button>
-                  <button type='submit' className='w-[40px] bg-[#DB3022] text-white rounded-md'>
-                    x
-                  </button>
-                </div>
-              </div>
-              <hr></hr>
-            </div>
-            <form>
+              );
+            })}
+            <form onSubmit={editExperience ? updateExperience : handleSubmitExperience}>
               <div className='mb-6 mt-5'>
                 <label htmlFor='posisi' className='block text-[16px] font-medium text-gray-600'>
                   Posisi
                 </label>
-                <input type='text' id='posisi' name='posisi' className='mt-1 p-4 border w-full h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300' placeholder='web developer' />
+                <input
+                  type='text'
+                  id='posisi'
+                  name='posisi'
+                  className='mt-1 p-4 border w-full h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300'
+                  placeholder='web developer'
+                  value={formExperience?.position}
+                  onChange={(e) => setFormExperience({ ...formExperience, position: e.target.value })}
+                />
+              </div>
+              <div className='mb-6 mt-5'>
+                <label htmlFor='photo-perusahaan' className='block text-[16px] font-medium text-gray-600'>
+                  Photo Perusahaan
+                </label>
+                <input type='file' id='photo-perusahaan' name='photo-perusahaan' className='mt-1 p-2 border w-full h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300' onChange={onChangePhotoExperience} />
               </div>
               <div className='wrapper-nama-perusahaan flex gap-6'>
                 <div className='mb-6 mt-5'>
                   <label htmlFor='skill' className='block text-[14px] font-medium text-gray-600'>
                     Nama perusahaan
                   </label>
-                  <input type='text' id='skill' name='skill' className='mt-1 p-4 border w-[300px] h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300' placeholder='PT Harus bisa' />
+                  <input
+                    type='text'
+                    id='skill'
+                    name='skill'
+                    value={formExperience?.company_name}
+                    className='mt-1 p-4 border w-[300px] h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300'
+                    placeholder='PT Harus bisa'
+                    onChange={(e) => setFormExperience({ ...formExperience, company_name: e.target.value })}
+                  />
                 </div>
                 <div className='mb-6 mt-5'>
                   <label htmlFor='skill' className='block text-[14px] font-medium text-gray-600'>
                     Dari Bulan/tahun
                   </label>
-                  <input type='text' id='skill' name='skill' className='mt-1 p-4 border w-[135px] h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300' placeholder='Januari 2018' />
+                  <input
+                    type='text'
+                    id='skill'
+                    name='skill'
+                    className='mt-1 p-4 border w-[135px] h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300'
+                    placeholder='Januari 2018'
+                    value={formExperience?.from_month}
+                    onChange={(e) => setFormExperience({ ...formExperience, from_month: e.target.value })}
+                  />
                 </div>
                 <div className='mb-6 mt-5'>
                   <label htmlFor='skill' className='block text-[14px] font-medium text-gray-600'>
                     Sampai Bulan/tahun
                   </label>
-                  <input type='text' id='skill' name='skill' className='mt-1 p-4 border w-[138px] h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300' placeholder='Januari 2019' />
+                  <input
+                    type='text'
+                    id='skill'
+                    name='skill'
+                    className='mt-1 p-4 border w-[138px] h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300'
+                    placeholder='Januari 2019'
+                    value={formExperience?.to_month}
+                    onChange={(e) => setFormExperience({ ...formExperience, to_month: e.target.value })}
+                  />
                 </div>
               </div>
               <div className='mb-6'>
@@ -550,14 +765,28 @@ export default function EditPhotoProfile() {
                   name='deskripsi-pengalaman'
                   className='mt-1 p-4 border w-full h-32 rounded-md focus:outline-none focus:ring focus:border-blue-300 resize-none'
                   placeholder='Tuliskan deskripsi singkat'
+                  value={formExperience?.description}
+                  onChange={(e) => setFormExperience({ ...formExperience, description: e.target.value })}
                 />
               </div>
-              <hr></hr>
-              <div className='btn-pengalaman-kerja mt-6'>
-                <button type='submit' className='border-2 border-[#FBB017] w-full text-[#FBB017] p-3 rounded-md'>
-                  Tambah pengalaman kerja
-                </button>
-              </div>
+              {editExperience ? (
+                <div className='btn-portofolio mt-16'>
+                  <hr></hr>
+                  <button type='submit' className='w-full mt-6 border-2 border-[#FBB017] p-2 text-[#FBB017] rounded-md'>
+                    Update Pengalaman Kerja
+                  </button>
+                  <p className='w-full text-center mt-6 border-2 border-[#FBB017] p-2 text-[#FBB017] rounded-md' onClick={handleBatalUpdateExperience}>
+                    Batal
+                  </p>
+                </div>
+              ) : (
+                <div className='btn-portofolio mt-16'>
+                  <hr></hr>
+                  <button type='submit' className='w-full mt-6 border-2 border-[#FBB017] p-2 text-[#FBB017] rounded-md'>
+                    Tambah Pengalaman Kerja
+                  </button>
+                </div>
+              )}
             </form>
           </div>
         </div>
@@ -580,10 +809,10 @@ export default function EditPhotoProfile() {
                       </a>
                     </div>
                     <div className='wrapper-btn flex absolute right-0 top-[-30px] gap-5'>
-                      <button type='submit' className='w-[70px] bg-[#FBB017] text-white p-1 rounded-md' onClick={() => handleEditPortfolio(items.id)}>
+                      <button className='w-[70px] bg-[#FBB017] text-white p-1 rounded-md' onClick={() => handleEditPortfolio(items.id)}>
                         Edit
                       </button>
-                      <button type='submit' className='w-[40px] bg-[#DB3022] text-white rounded-md' onClick={() => handleDeletePortfolio(items.id)}>
+                      <button className='w-[40px] bg-[#DB3022] text-white rounded-md' onClick={() => handleDeletePortfolio(items.id)}>
                         x
                       </button>
                     </div>
@@ -662,15 +891,17 @@ export default function EditPhotoProfile() {
                 {showCardUplodImage ? (
                   <div>
                     <img src={formPortfolio?.photo} />
-                    <button
+                    <p
                       className='w-[100px] bg-slate-600 text-white p-1 rounded-md text-sm mt-3 text-center mx-auto'
                       onClick={(e) => {
                         e.preventDefault();
                         setShowCardUplodImage(false);
+                        setFormPortfolio({ ...formPortfolio, photo: '' });
+                        setPhotoPortfolio('');
                       }}
                     >
                       Batal
-                    </button>
+                    </p>
                   </div>
                 ) : (
                   <div className='wrapper-upload-image flex flex-col justify-center items-center border-dashed border-2 border-[#9EA0A5] pb-8 mt-2' onDragOver={handleDargOverImage} onDrop={handleDropImage}>
@@ -705,12 +936,24 @@ export default function EditPhotoProfile() {
                 )}
               </div>
 
-              <div className='btn-portofolio mt-16'>
-                <hr></hr>
-                <button type='submit' className='w-full mt-6 border-2 border-[#FBB017] p-2 text-[#FBB017] rounded-md'>
-                  {editPortfolio ? 'Update Portfolio' : 'Tambah Portofolio'}
-                </button>
-              </div>
+              {editPortfolio ? (
+                <div className='btn-portofolio mt-16'>
+                  <hr></hr>
+                  <button type='submit' className='w-full mt-6 border-2 border-[#FBB017] p-2 text-[#FBB017] rounded-md'>
+                    Update Portfolio
+                  </button>
+                  <p className='w-full text-center mt-6 border-2 border-[#FBB017] p-2 text-[#FBB017] rounded-md' onClick={handleBatalUpdate}>
+                    Batal
+                  </p>
+                </div>
+              ) : (
+                <div className='btn-portofolio mt-16'>
+                  <hr></hr>
+                  <button type='submit' className='w-full mt-6 border-2 border-[#FBB017] p-2 text-[#FBB017] rounded-md'>
+                    Tambah Portfolio
+                  </button>
+                </div>
+              )}
             </form>
           </div>
         </div>

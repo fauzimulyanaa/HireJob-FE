@@ -226,7 +226,7 @@ export const getDetailPortfolioWorker = (id) => async (dispatch, getState) => {
   }
 };
 
-export const updatePortfolioWorkerAction = (bodyData, setFormPortfolio, id) => async (dispatch, getState) => {
+export const updatePortfolioWorkerAction = (bodyData, setFormPortfolio, setEditPortfolio, id) => async (dispatch, getState) => {
   let updatePortfolioWorkerUrl = `/portfolio/pekerja/${id}`;
   try {
     dispatch({ type: 'UPDATE_PORTFOLIO_WORKER_PENDING' });
@@ -254,11 +254,168 @@ export const updatePortfolioWorkerAction = (bodyData, setFormPortfolio, id) => a
           type: '',
           nama_aplikasi: '',
         });
+        setEditPortfolio(false);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         return false;
       }
     });
   } catch (err) {
     dispatch({ payload: err.message, type: 'UPDATE_PORTFOLIO_WORKER_ERROR' });
+  }
+};
+
+export const getExperienceWorkerAction = () => async (dispatch, getState) => {
+  let experienceWorkerUrl = `/experience/pekerja`;
+  try {
+    dispatch({ type: 'GET_EXPERIENCE_WORKER_PENDING' });
+    let token = await getState().AuthLoginWorker.data.token;
+    const result = await axios.get(base_url + experienceWorkerUrl, {
+      headers: {
+        token,
+      },
+    });
+    dispatch({ payload: result.data.data, type: 'GET_EXPERIENCE_WORKER_SUCCESS' });
+  } catch (err) {
+    dispatch({ payload: err.message, type: 'GET_EXPERIENCE_WORKER_ERROR' });
+  }
+};
+
+export const postExperienceAction = (bodyData, setFormExperience) => async (dispatch, getState) => {
+  let addExperienceWorkerUrl = `/experience/pekerja`;
+  try {
+    dispatch({ type: 'POST_EXPERIENCE_WORKER_PENDING' });
+    let token = await getState().AuthLoginWorker.data.token;
+    // let id_user = await getState().AuthLoginWorker.data.id_user;
+    const result = await axios.post(base_url + addExperienceWorkerUrl, bodyData, {
+      headers: {
+        token,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    dispatch({ payload: result.data, type: 'POST_EXPERIENCE_WORKER_SUCCESS' });
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: result.data.message,
+      confirmButtonText: 'Ok',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(getExperienceWorkerAction());
+        setFormExperience({
+          position: '',
+          company_name: '',
+          from_month: '',
+          to_month: '',
+          description: '',
+          photo: '',
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        return false;
+      }
+    });
+    dispatch(getExperienceWorkerAction());
+  } catch (err) {
+    dispatch({ payload: err.response.data.messsage, type: 'POST_EXPERIENCE_WORKER_ERROR' });
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `${err.response.data.messsage}`,
+    });
+  }
+};
+
+export const deleteExperienceWorkerAction = (id, setFormExperience) => async (dispatch, getState) => {
+  let deleteExperienceWorkerUrl = `/experience/pekerja/${id}`;
+  try {
+    dispatch({ type: 'DELETE_EXPERIENCE_WORKER_PENDING' });
+    let token = await getState().AuthLoginWorker.data.token;
+    // let id_user = await getState().AuthLoginWorker.data.id_user;
+    const result = await axios.delete(base_url + deleteExperienceWorkerUrl, {
+      headers: {
+        token,
+      },
+    });
+    dispatch({ payload: result.data, type: 'DELETE_EXPERIENCE_WORKER_SUCCESS' });
+    Swal.fire({
+      icon: 'success',
+      title: 'Delete Success',
+      text: result.data.message,
+      confirmButtonText: 'Ok',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(getExperienceWorkerAction());
+        setFormExperience({
+          position: '',
+          company_name: '',
+          from_month: '',
+          to_month: '',
+          description: '',
+          photo: '',
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        return false;
+      }
+    });
+    dispatch(getExperienceWorkerAction());
+  } catch (err) {
+    dispatch({ payload: err.response.data.messsage, type: 'DELETE_EXPERIENCE_WORKER_ERROR' });
+  }
+};
+
+export const getDetailExperienceWorker = (id) => async (dispatch, getState) => {
+  let detailExperienceUrl = `/experience/pekerja/${id}`;
+  try {
+    dispatch({ type: 'GET_DETAIL_EXPERIENCE_WORKER_PENDING' });
+    let token = await getState().AuthLoginWorker.data.token;
+    const result = await axios.get(base_url + detailExperienceUrl, {
+      headers: {
+        token,
+      },
+    });
+    dispatch({ payload: result.data.data, type: 'GET_DETAIL_EXPERIENCE_WORKER_SUCCESS' });
+  } catch (err) {
+    dispatch({ payload: err.message, type: 'GET_DETAIL_EXPERIENCE_WORKER_ERROR' });
+  }
+};
+
+export const updateExperienceWorkerAction = (bodyData, setFormExperience, setEditExperience, id) => async (dispatch, getState) => {
+  let updateExperienceWorkerUrl = `/experience/pekerja/${id}`;
+  try {
+    dispatch({ type: 'UPDATE_EXPERIENCE_WORKER_PENDING' });
+    let token = await getState().AuthLoginWorker.data.token;
+    const result = await axios.put(base_url + updateExperienceWorkerUrl, bodyData, {
+      headers: {
+        token,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    dispatch({ payload: result.data.data, type: 'UPDATE_EXPERIENCE_WORKER_SUCCESS' });
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: result.data.message,
+      confirmButtonText: 'Ok',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(getExperienceWorkerAction());
+        dispatch(getDetailExperienceWorker(id));
+        setFormExperience({
+          position: '',
+          company_name: '',
+          from_month: '',
+          to_month: '',
+          description: '',
+          photo: '',
+        });
+        setEditExperience(false);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        return false;
+      }
+    });
+  } catch (err) {
+    dispatch({ payload: err.message, type: 'UPDATE_EXPERIENCE_WORKER_ERROR' });
   }
 };
