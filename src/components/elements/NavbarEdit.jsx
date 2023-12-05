@@ -7,12 +7,12 @@ export default function Navbar() {
   return (
     <>
       <section>
-        <nav className="bg-white w-screen">
-          <div className="content flex justify-between items-basaline mx-10 px-9 py-6">
+        <nav className="bg-white w-full">
+          <div className="content flex justify-between items-center mx-10 px-9 py-6">
             <div className="logo">
               <img src={Logo} />
             </div>
-            <div className="icon flex space-x-5">
+            <div className="icon flex  items-center space-x-5">
               <a href="">
                 <img src={Bell} />
               </a>

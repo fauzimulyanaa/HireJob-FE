@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      rotate: {
+        17: "-15.787deg",
+      },
+    },
     fontFamily: {
       sans: "Open Sans, sans-serif",
     },
