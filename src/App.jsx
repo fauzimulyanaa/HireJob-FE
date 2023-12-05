@@ -1,4 +1,9 @@
-import { Navigate, BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  Navigate,
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 import RegisterCompany from "./pages/AuthCompany/Register";
 import LoginCompany from "./pages/AuthCompany/Login";
 import RegisterWorker from "./pages/AuthWorker/Register";
