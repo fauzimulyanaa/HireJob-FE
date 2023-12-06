@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import { Navigate, BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RegisterCompany from "./pages/AuthCompany/Register";
 import LoginCompany from "./pages/AuthCompany/Login";
@@ -15,29 +15,12 @@ import PageResetPassword from "./pages/ResetPassword/PageResetPassword";
 import PageSendOtp from "./pages/ResetPassword/PageSendOtp";
 import PageNewPassword from "./pages/ResetPassword/PageNewPassword";
 import PageHomeUtama from "./pages/HomeUtama/PageHomeUtama";
-=======
-import { Navigate, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import RegisterCompany from './pages/AuthCompany/Register';
-import LoginCompany from './pages/AuthCompany/Login';
-import RegisterWorker from './pages/AuthWorker/Register';
-import LoginWorker from './pages/AuthWorker/Login';
-import PageEditCompany from './pages/PageEditCompany/PageEditCompany';
-import HomeLandingPage from './pages/HomePage/PagesLanding';
-import PageEditWorker from './pages/PageEditWorker/PageEditWorker';
-import PagesChat from './pages/ChatTable/PagesChat';
-
-import ProfileWorker from './pages/ProfileWorker/Profile';
-import PageResetPassword from './pages/ResetPassword/PageResetPassword';
-import PageSendOtp from './pages/ResetPassword/PageSendOtp';
-import PageNewPassword from './pages/ResetPassword/PageNewPassword';
-import PageHomeUtama from './pages/HomeUtama/PageHomeUtama';
->>>>>>> 396eaa4e9897bb684761541cbf612c941b3301e2
-
+// =======
 const App = () => {
   return (
     <Router>
       <Routes>
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
         <Route path="/" element={<Navigate to="/home" replace={true} />} />
         <Route path="/register-company" element={<RegisterCompany />} />
         <Route path="/login-company" element={<LoginCompany />} />
@@ -55,7 +38,7 @@ const App = () => {
         <Route path="/send-otp" element={<PageSendOtp />} />
         <Route path="/new-password" element={<PageNewPassword />} />
         <Route path="/home" element={<PageHomeUtama />} />
-=======
+{/* ======= */}
         <Route path='/' element={<Navigate to='/home' replace={true} />} />
         <Route path='/register-company' element={<RegisterCompany />} />
         <Route path='/login-company' element={<LoginCompany />} />
@@ -71,7 +54,7 @@ const App = () => {
         <Route path='/send-otp' element={<PageSendOtp />} />
         <Route path='/new-password' element={<PageNewPassword />} />
         <Route path='/home' element={<PageHomeUtama />} />
->>>>>>> 396eaa4e9897bb684761541cbf612c941b3301e2
+{/* >>>>>>> 396eaa4e9897bb684761541cbf612c941b3301e2 */}
       </Routes>
     </Router>
   );
