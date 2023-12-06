@@ -23,10 +23,11 @@ export const getSkillByIdWorker = (id) => async (dispatch, getState) => {
   let skillWorkerUrl = `/skill/pekerja/${id}`;
   try {
     dispatch({ type: 'GET_SKILL_WORKER_BY_ID_WORKER_PENDING' });
-    let token = await getState().AuthLoginWorker.data.token;
+    let tokenWorker = await getState().AuthLoginWorker?.data?.token;
+    let tokenCompany = await getState().AuthLoginCompany?.data?.token;
     const result = await axios.get(base_url + skillWorkerUrl, {
       headers: {
-        token,
+        token: tokenCompany || tokenWorker,
       },
     });
     dispatch({ payload: result.data, type: 'GET_SKILL_WORKER_BY_ID_WORKER_SUCCESS' });
@@ -114,14 +115,15 @@ export const deleteSkillWorkerAction = (id) => async (dispatch, getState) => {
   }
 };
 
-export const getPortfolioWorkerAction = () => async (dispatch, getState) => {
-  let portfolioWorkerUrl = `/portfolio/pekerja`;
+export const getPortfolioWorkerAction = (id) => async (dispatch, getState) => {
+  let portfolioWorkerUrl = `/portfolio/all/${id}`;
   try {
     dispatch({ type: 'GET_PORTFOLIO_WORKER_PENDING' });
-    let token = await getState().AuthLoginWorker.data.token;
+    let tokenWorker = await getState().AuthLoginWorker?.data?.token;
+    let tokenCompany = await getState().AuthLoginCompany?.data?.token;
     const result = await axios.get(base_url + portfolioWorkerUrl, {
       headers: {
-        token,
+        token: tokenCompany || tokenWorker,
       },
     });
     dispatch({ payload: result.data.data, type: 'GET_PORTFOLIO_WORKER_SUCCESS' });
@@ -135,7 +137,7 @@ export const postPortfolioAction = (bodyData, setFormPortfolio) => async (dispat
   try {
     dispatch({ type: 'POST_PORTFOLIO_WORKER_PENDING' });
     let token = await getState().AuthLoginWorker.data.token;
-    // let id_user = await getState().AuthLoginWorker.data.id_user;
+    let id_user = await getState().AuthLoginWorker.data.id_user;
     const result = await axios.post(base_url + addPortfolioWorkerUrl, bodyData, {
       headers: {
         token,
@@ -151,7 +153,7 @@ export const postPortfolioAction = (bodyData, setFormPortfolio) => async (dispat
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(getPortfolioWorkerAction());
+        dispatch(getPortfolioWorkerAction(id_user));
         setFormPortfolio({
           photo: '',
           link_repo: '',
@@ -162,7 +164,7 @@ export const postPortfolioAction = (bodyData, setFormPortfolio) => async (dispat
         return false;
       }
     });
-    dispatch(getPortfolioWorkerAction());
+    dispatch(getPortfolioWorkerAction(id_user));
   } catch (err) {
     dispatch({ payload: err.response.data.messsage, type: 'POST_PORTFOLIO_WORKER_ERROR' });
     Swal.fire({
@@ -178,7 +180,7 @@ export const deletePortfolioWorkerAction = (id, setFormPortfolio) => async (disp
   try {
     dispatch({ type: 'DELETE_PORTFOLIO_WORKER_PENDING' });
     let token = await getState().AuthLoginWorker.data.token;
-    // let id_user = await getState().AuthLoginWorker.data.id_user;
+    let id_user = await getState().AuthLoginWorker.data.id_user;
     const result = await axios.delete(base_url + deletePortfolioWorkerUrl, {
       headers: {
         token,
@@ -193,7 +195,7 @@ export const deletePortfolioWorkerAction = (id, setFormPortfolio) => async (disp
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(getPortfolioWorkerAction());
+        dispatch(getPortfolioWorkerAction(id_user));
         setFormPortfolio({
           photo: '',
           link_repo: '',
@@ -204,7 +206,7 @@ export const deletePortfolioWorkerAction = (id, setFormPortfolio) => async (disp
         return false;
       }
     });
-    dispatch(getPortfolioWorkerAction());
+    dispatch(getPortfolioWorkerAction(id_user));
   } catch (err) {
     dispatch({ payload: err.response.data.messsage, type: 'DELETE_PORTFOLIO_WORKER_ERROR' });
   }
@@ -231,6 +233,7 @@ export const updatePortfolioWorkerAction = (bodyData, setFormPortfolio, setEditP
   try {
     dispatch({ type: 'UPDATE_PORTFOLIO_WORKER_PENDING' });
     let token = await getState().AuthLoginWorker.data.token;
+    let id_user = await getState().AuthLoginWorker.data.id_user;
     const result = await axios.put(base_url + updatePortfolioWorkerUrl, bodyData, {
       headers: {
         token,
@@ -246,7 +249,7 @@ export const updatePortfolioWorkerAction = (bodyData, setFormPortfolio, setEditP
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(getPortfolioWorkerAction());
+        dispatch(getPortfolioWorkerAction(id_user));
         dispatch(getDetailPortfolioWorker(id));
         setFormPortfolio({
           photo: '',
@@ -264,14 +267,15 @@ export const updatePortfolioWorkerAction = (bodyData, setFormPortfolio, setEditP
   }
 };
 
-export const getExperienceWorkerAction = () => async (dispatch, getState) => {
-  let experienceWorkerUrl = `/experience/pekerja`;
+export const getExperienceWorkerAction = (id) => async (dispatch, getState) => {
+  let experienceWorkerUrl = `/experience/all/${id}`;
   try {
     dispatch({ type: 'GET_EXPERIENCE_WORKER_PENDING' });
-    let token = await getState().AuthLoginWorker.data.token;
+    let tokenWorker = await getState().AuthLoginWorker?.data?.token;
+    let tokenCompany = await getState().AuthLoginCompany?.data?.token;
     const result = await axios.get(base_url + experienceWorkerUrl, {
       headers: {
-        token,
+        token: tokenCompany || tokenWorker,
       },
     });
     dispatch({ payload: result.data.data, type: 'GET_EXPERIENCE_WORKER_SUCCESS' });
@@ -285,7 +289,7 @@ export const postExperienceAction = (bodyData, setFormExperience) => async (disp
   try {
     dispatch({ type: 'POST_EXPERIENCE_WORKER_PENDING' });
     let token = await getState().AuthLoginWorker.data.token;
-    // let id_user = await getState().AuthLoginWorker.data.id_user;
+    let id_user = await getState().AuthLoginWorker.data.id_user;
     const result = await axios.post(base_url + addExperienceWorkerUrl, bodyData, {
       headers: {
         token,
@@ -301,7 +305,7 @@ export const postExperienceAction = (bodyData, setFormExperience) => async (disp
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(getExperienceWorkerAction());
+        dispatch(getExperienceWorkerAction(id_user));
         setFormExperience({
           position: '',
           company_name: '',
@@ -314,7 +318,7 @@ export const postExperienceAction = (bodyData, setFormExperience) => async (disp
         return false;
       }
     });
-    dispatch(getExperienceWorkerAction());
+    dispatch(getExperienceWorkerAction(id_user));
   } catch (err) {
     dispatch({ payload: err.response.data.messsage, type: 'POST_EXPERIENCE_WORKER_ERROR' });
     Swal.fire({
@@ -330,7 +334,7 @@ export const deleteExperienceWorkerAction = (id, setFormExperience) => async (di
   try {
     dispatch({ type: 'DELETE_EXPERIENCE_WORKER_PENDING' });
     let token = await getState().AuthLoginWorker.data.token;
-    // let id_user = await getState().AuthLoginWorker.data.id_user;
+    let id_user = await getState().AuthLoginWorker.data.id_user;
     const result = await axios.delete(base_url + deleteExperienceWorkerUrl, {
       headers: {
         token,
@@ -345,7 +349,7 @@ export const deleteExperienceWorkerAction = (id, setFormExperience) => async (di
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(getExperienceWorkerAction());
+        dispatch(getExperienceWorkerAction(id_user));
         setFormExperience({
           position: '',
           company_name: '',
@@ -358,7 +362,7 @@ export const deleteExperienceWorkerAction = (id, setFormExperience) => async (di
         return false;
       }
     });
-    dispatch(getExperienceWorkerAction());
+    dispatch(getExperienceWorkerAction(id_user));
   } catch (err) {
     dispatch({ payload: err.response.data.messsage, type: 'DELETE_EXPERIENCE_WORKER_ERROR' });
   }
@@ -385,6 +389,7 @@ export const updateExperienceWorkerAction = (bodyData, setFormExperience, setEdi
   try {
     dispatch({ type: 'UPDATE_EXPERIENCE_WORKER_PENDING' });
     let token = await getState().AuthLoginWorker.data.token;
+    let id_user = await getState().AuthLoginWorker.data.id_user;
     const result = await axios.put(base_url + updateExperienceWorkerUrl, bodyData, {
       headers: {
         token,
@@ -400,7 +405,7 @@ export const updateExperienceWorkerAction = (bodyData, setFormExperience, setEdi
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(getExperienceWorkerAction());
+        dispatch(getExperienceWorkerAction(id_user));
         dispatch(getDetailExperienceWorker(id));
         setFormExperience({
           position: '',
