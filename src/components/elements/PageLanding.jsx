@@ -12,6 +12,7 @@ export default function PageHome() {
   const dispatch = useDispatch();
   const showWorker = useSelector((state) => state.showWorker);
   const showSkillWorker = useSelector((state) => state.showSkillWorker);
+
   console.log(showWorker);
 
   const [page, setPage] = useState(0);
@@ -89,7 +90,7 @@ export default function PageHome() {
               </div>
               <div className="nextProfile ms-auto my-auto">
                 <button className="bg-violet-700 text-white rounded p-2 w-40">
-                  <Link to={"/worker-profile"}>Lihat Profile</Link>
+                  <Link to={`/profile/${showWorker?.data?.result.id_user}`}>Lihat Profile</Link>
                 </button>
               </div>
             </div>

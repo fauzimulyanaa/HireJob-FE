@@ -8,47 +8,50 @@ import Union from "../../assets/img/Union.svg";
 import ImageSkill from "../../assets/img/image-skill.png";
 import skill from "../../assets/img/skill.svg";
 import ReactCardSlider from "react-card-slider-component";
+import Image1 from "../../assets/img/image-1.svg";
+import Image2 from "../../assets/img/image-2.svg";
+import Image3 from "../../assets/img/image-3.svg";
 
 export default function Home() {
   const slides = [
     {
-      image: "https://picsum.photos/200/300",
-      title: "This is a title",
+      image: Image1,
+      title: "This is a title Monster",
       description: "This is a description",
       // clickEvent: sliderClick
     },
     {
-      image: "https://picsum.photos/600/500",
+      image: Image2,
       title: "This is a second title",
       description: "This is a second description",
       // clickEvent: sliderClick
     },
     {
-      image: "https://picsum.photos/700/600",
+      image: Image3,
       title: "This is a third title",
       description: "This is a third description",
       // clickEvent: sliderClick
     },
     {
-      image: "https://picsum.photos/500/400",
+      image: Image1,
       title: "This is a fourth title",
       description: "This is a fourth description",
       // clickEvent: sliderClick
     },
     {
-      image: "https://picsum.photos/200/300",
+      image: Image2,
       title: "This is a fifth title",
       description: "This is a fifth description",
       // clickEvent: sliderClick
     },
     {
-      image: "https://picsum.photos/800/700",
+      image: Image3,
       title: "This is a sixth title",
       description: "This is a sixth description",
       // clickEvent: sliderClick
     },
     {
-      image: "https://picsum.photos/800/900",
+      image: Image1,
       title: "This is a seventh title",
       description: "This is a seventh description",
       // clickEvent: sliderClick
