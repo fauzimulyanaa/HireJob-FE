@@ -27,6 +27,13 @@ import listChatCompany from './ListChatCompany';
 import detailChat from './detailChat';
 import sendChat from './SendChat';
 import listChatWorker from './ListChatWorker';
+import AuthLogout from './AuthLogout';
+import sendOtpCompany from './SendOtpCompany';
+import sendOtpWorker from './SendOtpWorker';
+import verifyOtpCompany from './VerifyOtpCompany';
+import verifyOtpWorker from './VerifyOtpWorker';
+import updatePasswordCompany from './UpdatePasswordCompany';
+import updatePasswordWorker from './UpdatePasswordWorker';
 
 const rootReducers = combineReducers({
   AuthRegisterCompany,
@@ -58,6 +65,12 @@ const rootReducers = combineReducers({
   detailChat,
   sendChat,
   listChatWorker,
+  sendOtpCompany,
+  sendOtpWorker,
+  verifyOtpCompany,
+  verifyOtpWorker,
+  updatePasswordCompany,
+  updatePasswordWorker,
 });
 
 export default rootReducers;

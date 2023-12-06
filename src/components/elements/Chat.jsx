@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import Photo from '../../assets/img/chatimg.png';
 import SendMessange from '../../assets/img/send.svg';
 
@@ -9,6 +10,7 @@ import { getListChatCompanyAction, getDetailChatAction, postChatAction, getListC
 
 export default function Chating() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const listChatCompany = useSelector((state) => state.listChatCompany);
   const listChatWorker = useSelector((state) => state.listChatWorker);
   const detailChat = useSelector((state) => state.detailChat);
@@ -49,7 +51,7 @@ export default function Chating() {
 
   const handleSubmitChat = (event) => {
     event.preventDefault();
-    dispatch(postChatAction(formChat, setFormChat));
+    dispatch(postChatAction(formChat, navigate, setFormChat));
   };
 
   return (
