@@ -499,7 +499,7 @@ export default function EditPhotoProfile() {
 
   return (
     <>
-      <div className="container-full flex-col flex justify-around md:flex-row gap-[90px]">
+      <div className="container-fluid flex-col flex justify-around md:flex-row gap-[90px]">
         <form className="flex w-full justify-evenly flex-wrap md:w-1/2" onSubmit={handleSubmit}>
           <section>
             <div className="wrapper-edit">
@@ -531,9 +531,9 @@ export default function EditPhotoProfile() {
             </div>
           </section>
         </form>
-        <section className="pb-56 lg:w-full">
+        <section className="pb-56">
           <div className="form-edit-company">
-            <div className="wrapper-form bg-white w-[700px] p-10 rounded-lg h-[720px] shadow-xl">
+            <div className="wrapper-form bg-white p-10 rounded-lg h-[720px] shadow-xl w-[450px] md:w-full m-auto">
               <div className="hadline">
                 <h1 className="text-3xl mb-4">Data diri</h1>
                 <hr />
@@ -614,7 +614,7 @@ export default function EditPhotoProfile() {
           </div>
 
           <div className="container-skils mb-10 mt-9">
-            <div className="wrpper-form-skills bg-white w-[700px] p-10 rounded-lg shadow-xl">
+            <div className="wrapper-form bg-white p-10 rounded-lg h-auto shadow-xl w-[450px] md:w-full m-auto">
               <div className="hadline">
                 <h1 className="text-3xl mb-4">Skill</h1>
                 <hr />
@@ -655,7 +655,7 @@ export default function EditPhotoProfile() {
           </div>
 
           <div className="container-pengalaman-kerja">
-            <div className="wrpper-form-skills bg-white w-[700px] p-10 rounded-lg h-auto shadow-xl">
+            <div className="wrapper-form bg-white p-10 rounded-lg h-auto shadow-xl w-[450px] md:w-full m-auto">
               <div className="hadline">
                 <h1 className="text-3xl mb-4">Pengalaman kerja</h1>
                 <hr />
@@ -712,7 +712,7 @@ export default function EditPhotoProfile() {
                   </label>
                   <input type="file" id="photo-perusahaan" name="photo-perusahaan" className="mt-1 p-2 border w-full h-12 rounded-md focus:outline-none focus:ring focus:border-blue-300" onChange={onChangePhotoExperience} />
                 </div>
-                <div className="wrapper-nama-perusahaan flex gap-6">
+                <div className="wrapper-nama-perusahaan flex flex-col md:flex-row md:gap-6">
                   <div className="mb-6 mt-5">
                     <label htmlFor="skill" className="block text-[14px] font-medium text-gray-600">
                       Nama perusahaan
@@ -727,7 +727,7 @@ export default function EditPhotoProfile() {
                       onChange={(e) => setFormExperience({ ...formExperience, company_name: e.target.value })}
                     />
                   </div>
-                  <div className="mb-6 mt-5">
+                  <div className="mb-6 mt-5 ">
                     <label htmlFor="skill" className="block text-[14px] font-medium text-gray-600">
                       Dari Bulan/tahun
                     </label>
@@ -793,7 +793,7 @@ export default function EditPhotoProfile() {
           </div>
 
           <div className="container-portofolio mt-6">
-            <div className="wrpper-form-skills bg-white w-[700px] p-10 rounded-lg h-auto shadow-xl">
+            <div className="wrapper-form bg-white p-10 rounded-lg h-auto shadow-xl w-[450px] md:w-full m-auto">
               <div className="hadline">
                 <h1 className="text-3xl mb-4">Portofolio</h1>
                 <hr />

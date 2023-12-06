@@ -37,33 +37,33 @@ export default function Navbar() {
   return (
     <>
       <section>
-        <nav className="bg-white w-full ">
+        <nav className="bg-white w-full">
           <div className="content flex justify-between items-center mx-2 md:mx-10 px-4 md:px-9 py-2 md:py-6">
             <Link to="/landing-home">
               <img src={Logo} alt="Logo" />
             </Link>
             <div className="icon flex items-center space-x-3 md:space-x-5 relative">
               <button className="md:hidden" onClick={() => setMenuOpen(!isMenuOpen)}>
-                <img src={HamburgerIcon} alt="Hamburger Icon" />
+                <img src={HamburgerIcon} alt="Hamburger Icon" className="w-[30px]" />
               </button>
               {isMenuOpen && (
-                <div className="md:hidden absolute top-full left-[-330px] right-[-30px]   bg-white rounded-md shadow-md mt-2 transition duration-300 ease-in-out w-[4  00px] ">
-                  <div className="p-4 space-y-2">
-                    <a href="" className="flex items-center">
+                <div className="md:hidden absolute top-full left-[-460px] right-[-24px]   bg-white  shadow-md mt-2 transition duration-300 ease-in-out p-6 z-50">
+                  <div className="p-4 space-y-2 ">
+                    <a href="" className="flex items-center border-b-2 border-slate-200 pb-5 pt-5">
                       <img src={Bell} alt="Bell" className="w-6 h-6" />
                       <span className="ml-2">Notifications</span>
                     </a>
-                    <a href="" className="flex items-center">
+                    <a href="" className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
                       <img src={Email} alt="Email" className="w-6 h-6" />
                       <span className="ml-2">Messages</span>
                     </a>
-                    <div className="flex items-center">
+                    <div className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
                       <div className="profiles">
                         <img className="rounded-full w-6 h-6" src={Profile} alt="Profile" />
                       </div>
                       <span className="ml-2">Profile</span>
                     </div>
-                    <button className="bg-red-500 text-white rounded-md p-2" onClick={handleLogout}>
+                    <button className="bg-red-500 text-white rounded-md p-2 w-full " onClick={handleLogout}>
                       Logout
                     </button>
                   </div>
