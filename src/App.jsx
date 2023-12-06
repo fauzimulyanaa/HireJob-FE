@@ -1,9 +1,4 @@
-import {
-  Navigate,
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { Navigate, BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RegisterCompany from "./pages/AuthCompany/Register";
 import LoginCompany from "./pages/AuthCompany/Login";
 import RegisterWorker from "./pages/AuthWorker/Register";
@@ -17,6 +12,7 @@ import PageResetPassword from "./pages/ResetPassword/PageResetPassword";
 import PageSendOtp from "./pages/ResetPassword/PageSendOtp";
 import PageNewPassword from "./pages/ResetPassword/PageNewPassword";
 import PageHomeUtama from "./pages/HomeUtama/PageHomeUtama";
+import HirePageWork from "./pages/HiringPage/PageHiring";
 
 const App = () => {
   return (
@@ -33,9 +29,13 @@ const App = () => {
         <Route path="/profile/:id" element={<ProfileWorker />} />
         <Route path="/chat-page" element={<PagesChat />} />
         <Route path="/profile" element={<ProfileWorker />} />
+        <Route path="/profile/:id" element={<ProfileWorker />} />
+        <Route path="/chat-page" element={<PagesChat />} />
+        <Route path="/profile" element={<ProfileWorker />} />
         <Route path="/reset-password" element={<PageResetPassword />} />
         <Route path="/send-otp" element={<PageSendOtp />} />
         <Route path="/new-password" element={<PageNewPassword />} />
+        <Route path="/hires-pages" element={<HirePageWork />} />
         <Route path="/home" element={<PageHomeUtama />} />
       </Routes>
     </Router>

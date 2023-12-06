@@ -6,13 +6,13 @@ const initialState = {
   errorMessage: '',
 };
 
-const detailProfileWrokerReducers = (state = initialState, action) => {
-  if (action.type === 'GET_DETAIL_PROFILE_WORKER_PENDING') {
+const addExperienceWorkerReducers = (state = initialState, action) => {
+  if (action.type === 'POST_EXPERIENCE_WORKER_PENDING') {
     return {
       ...state,
       isLoading: true,
     };
-  } else if (action.type === 'GET_DETAIL_PROFILE_WORKER_SUCCESS') {
+  } else if (action.type === 'POST_EXPERIENCE_WORKER_SUCCESS') {
     return {
       ...state,
       isLoading: false,
@@ -20,7 +20,7 @@ const detailProfileWrokerReducers = (state = initialState, action) => {
       isError: false,
       data: action.payload,
     };
-  } else if (action.type === 'GET_DETAIL_PROFILE_WORKER_ERROR') {
+  } else if (action.type === 'POST_EXPERIENCE_WORKER_ERROR') {
     return {
       ...state,
       isLoading: false,
@@ -33,4 +33,4 @@ const detailProfileWrokerReducers = (state = initialState, action) => {
   }
 };
 
-export default detailProfileWrokerReducers;
+export default addExperienceWorkerReducers;

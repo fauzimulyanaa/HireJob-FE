@@ -7,7 +7,7 @@ export default function NavbarHireChat() {
   return (
     <>
       <section>
-          <nav className="bg-white w-screen shadow-2xl">
+          <nav className="bg-white w-screen shadow-md">
             <div className="content flex justify-between mx-10 py-3">
             <div className="logo">
               <img src={Logo} />
