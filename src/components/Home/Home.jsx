@@ -7,70 +7,99 @@ import Cek from "../../assets/img/tick.svg";
 import Union from "../../assets/img/Union.svg";
 import ImageSkill from "../../assets/img/image-skill.png";
 import skill from "../../assets/img/skill.svg";
-import ReactCardSlider from "react-card-slider-component";
 import Image1 from "../../assets/img/image-1.svg";
 import Image2 from "../../assets/img/image-2.svg";
 import Image3 from "../../assets/img/image-3.svg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Footer from "../elements/Footer";
+import { useState } from "react";
 
 export default function Home() {
-  const slides = [
+  const comments = [
     {
       image: Image1,
-      title: "This is a title Monster",
+      name: "Harry Styles",
+      job: "Web Developer",
       description: "This is a description",
-      // clickEvent: sliderClick
     },
     {
       image: Image2,
-      title: "This is a second title",
-      description: "This is a second description",
-      // clickEvent: sliderClick
+      name: "Harry Styles",
+      job: "Web Developer",
+      description: "This is a description",
     },
     {
       image: Image3,
-      title: "This is a third title",
-      description: "This is a third description",
-      // clickEvent: sliderClick
+      name: "Harry Styles",
+      job: "Web Developer",
+      description: "This is a description",
     },
     {
       image: Image1,
-      title: "This is a fourth title",
-      description: "This is a fourth description",
-      // clickEvent: sliderClick
+      name: "Harry Styles",
+      job: "Web Developer",
+      description: "This is a description",
     },
     {
       image: Image2,
-      title: "This is a fifth title",
-      description: "This is a fifth description",
-      // clickEvent: sliderClick
+      name: "Harry Styles",
+      job: "Web Developer",
+      description: "This is a description",
     },
     {
       image: Image3,
-      title: "This is a sixth title",
-      description: "This is a sixth description",
-      // clickEvent: sliderClick
+      name: "Harry Styles",
+      job: "Web Developer",
+      description: "This is a description",
     },
     {
       image: Image1,
-      title: "This is a seventh title",
-      description: "This is a seventh description",
-      // clickEvent: sliderClick
+      name: "Harry Styles",
+      job: "Web Developer",
+      description: "This is a description",
     },
   ];
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+  };
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
-    <div className="container-full m-auto h-auto pb-11">
-      <header className="px-20 py-8">
+    <div className="container-full m-auto h-auto">
+      <header className="px-20 py-8 ">
         <nav className="flex justify-between ">
           <div className="logo">
             <img src={Logo} alt="Logo" />
           </div>
-          <div className="btn-cta flex items-center gap-10">
-            <Link to="/login-worker" className="text-[#5E50A1] text-[14px] border-2 border-[#5E50A1] p-2 rounded-md">
-              Masuk Untuk Pekerja
-            </Link>
-            <Link to="/login-company" className="text-white text-[14px] bg-[#5E50A1] p-3 rounded-md">
-              Masuk Untuk Perekrut
-            </Link>
+          <div className="btn-cta flex items-center gap-10 ">
+            {/* Hamburger Icon */}
+            <div className="cursor-pointer" onClick={handleMenuToggle}>
+              <svg className="w-6 h-6 text-[#5E50A1] block sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </div>
+
+            {/* Navigation Links */}
+            <div className={`sm:flex items-center gap-10 ${isMenuOpen ? "block" : "hidden"}`}>
+              <Link to="/login-worker" className="text-[#5E50A1] text-[14px] border-2 border-[#5E50A1] p-[10px] rounded-md">
+                Masuk Untuk Pekerja
+              </Link>
+              <Link to="/login-company" className="text-white text-[14px] bg-[#5E50A1] rounded-md p-[10px]">
+                Masuk Untuk Perekrut
+              </Link>
+            </div>
           </div>
         </nav>
       </header>
@@ -188,11 +217,47 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        <div style={{ marginTop: "5em" }}>
-          <ReactCardSlider slides={slides} />
+      <section className="mt-40 p-16  bg-[#FAFBFC] container-fluid ">
+        <div className="content mx-20">
+          <h1 className="header text-center text-4xl mb-6">Their opinion about peworld</h1>
+          <div className="container text-center ">
+            <Slider {...settings}>
+              {comments.map((item) => (
+                <div key={item.id} className="mb-14 p-9  w-[200px] shadow-lg	rounded-lg">
+                  <img src={item.image} className="w-[110px] m-auto mb-3" />
+                  <h2 className="title text-2xl mb-2">{item.name}</h2>
+                  <p className="mb-2 text-[#9EA0A5]">{item.job}</p>
+                  <p className="description">{item.description}</p>
+                </div>
+              ))}
+            </Slider>
+          </div>
         </div>
       </section>
+
+      <section>
+        <div className="container bg-[#5E50A1] m-auto w-[1140px] mt-28 relative rounded-tl-[40px] rounded-br-[20px]">
+          <div className="wrapper-text px-20 absolute top-[80px] flex justify-between items-center w-full">
+            <div className="tagline-card">
+              <h1 className="text-3xl w-[260px] text-white leading-relaxed	">Lorem ipsum dolor sit amet</h1>
+            </div>
+            <div>
+              <button className="w-[200px] p-3 bg-white text-[#796EAF] rounded-md">Mulai Sekarang</button>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="1140" height="294" viewBox="0 0 1140 294" fill="none">
+            <path
+              d="M115.803 237.6C65.8759 260.01 20.5718 228.263 4.16058 209.588C1.38686 205.986 0.23114 203.086 -4.01769e-06 202.086L0 294L1140 294L1140 1.12042e-05C1103.48 69.8628 1011.16 212.09 934.051 222.094C837.664 234.6 735.73 187.578 610.912 237.6C486.095 287.622 389.015 259.109 331.46 237.6C273.905 216.092 178.212 209.588 115.803 237.6Z"
+              fill="white"
+              fillOpacity="0.05"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <footer className="mt-28 overflow-hidden">
+        <Footer />
+      </footer>
     </div>
   );
 }
