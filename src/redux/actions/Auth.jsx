@@ -110,13 +110,13 @@ export const loginActionWorker = (email, password, navigate) => async (dispatch)
     password,
   };
   try {
-    dispatch({ type: 'AUTH_LOGIN__WROKER_PENDING' });
+    dispatch({ type: 'AUTH_LOGIN_WROKER_PENDING' });
     const result = await axios.post(base_url + loginUrl, bodyData, {
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
       },
     });
-    dispatch({ payload: result.data, type: 'AUTH_LOGIN__WORKER_SUCCESS' });
+    dispatch({ payload: result.data, type: 'AUTH_LOGIN_WORKER_SUCCESS' });
     localStorage.setItem('status', 'worker');
     Swal.fire({
       title: 'Success!',
