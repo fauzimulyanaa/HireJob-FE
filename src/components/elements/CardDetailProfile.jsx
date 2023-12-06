@@ -32,16 +32,16 @@ export default function CardDetailProfile() {
               <p className='text-[#1F2A36] mb-2 text-[15px]'>{showDetailPortfolioWorkerForCompany?.data?.jabatan}</p>
               <div className='location flex gap-3 mb-2'>
                 <img src={LocationIcon} alt='Location Icon' />
-                <p className='text-[#9EA0A5] text-[14px]'>{showDetailPortfolioWorkerForCompany?.data?.domisili}</p>
+                <p className='text-gray-600 text-[14px]'>{showDetailPortfolioWorkerForCompany?.data?.domisili}</p>
               </div>
-              <p className='text-[#9EA0A5]'>{showDetailPortfolioWorkerForCompany?.data?.tempat_kerja}</p>
-              <p className='desc-profile text-[14px] mt-2 text-[#9EA0A5]'>{showDetailPortfolioWorkerForCompany?.data?.deskripsi_singkat}</p>
+              <p className='text-gray-600'>{showDetailPortfolioWorkerForCompany?.data?.tempat_kerja}</p>
+              <p className='desc-profile text-[14px] mt-2 text-gray-600'>{showDetailPortfolioWorkerForCompany?.data?.deskripsi_singkat}</p>
               <div className='wrapper-skill mt-14'>
                 <h1>Skill</h1>
                 <div className='skil-card mt-4 flex flex-wrap gap-3'>
                   {showSkillByIdWorker?.data?.data?.map((items) => {
                     return (
-                      <p className='w-20 bg-[#FBB017] text-center text-white p-1' key={items.id_skill}>
+                      <p className='w-20 rounded-md bg-[#FBB017] text-center text-white p-1' key={items.id_skill}>
                         {items.nama_skill}
                       </p>
                     );
@@ -51,19 +51,19 @@ export default function CardDetailProfile() {
               <div className='wrapper contact mt-10'>
                 <div className='mail flex items-center gap-5 mb-4'>
                   <img src={Mail} alt='icon Email' />
-                  <p className='text-[#9EA0A5] text-[14px]'>Louistommo@gmail.com</p>
+                  <p className='text-gray-600 text-[14px]'>Louistommo@gmail.com</p>
                 </div>
                 <div className='instagram flex items-center gap-5 mb-4'>
                   <img src={Instagram} alt='icon instgaram' />
-                  <p className='text-[#9EA0A5] text-[14px]'>@Louist91</p>
+                  <p className='text-gray-600 text-[14px]'>@Louist91</p>
                 </div>
                 <div className='Github flex items-center gap-5 mb-4'>
                   <img src={Github} alt='icon Github' />
-                  <p className='text-[#9EA0A5] text-[14px]'>@Louistommo</p>
+                  <p className='text-gray-600 text-[14px]'>@Louistommo</p>
                 </div>
                 <div className='gitlab flex items-center gap-5 mb-4'>
                   <img src={Gitlab} alt='icon Gitlab' />
-                  <p className='text-[#9EA0A5] text-[14px]'>@Louistommo91</p>
+                  <p className='text-gray-600 text-[14px]'>@Louistommo91</p>
                 </div>
               </div>
               <div className='wrapper-btn-hire mt-20'>

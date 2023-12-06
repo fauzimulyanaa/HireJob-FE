@@ -1,4 +1,4 @@
-import Navbar from "../elements/NavbarEdit";
+import Navbar from "../elements/NavbarPekerja";
 import CardDetailProfile from "../elements/CardDetailProfile";
 import Footer from "../elements/Footer";
 import CardDetailProject from "../elements/CardDetailProject";
