@@ -33,6 +33,7 @@ const rootReducers = combineReducers({
   AuthLoginCompany,
   AuthRegisterWorker,
   AuthLoginWorker,
+  AuthLogout,
   detailProfileCompany,
   editProfileCompany,
   showWorker,
