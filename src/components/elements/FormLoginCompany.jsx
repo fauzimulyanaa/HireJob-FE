@@ -95,7 +95,7 @@ export default function FormInputLoginCompany() {
                 <div className="container-link my-5 text-center">
                   <p className="signup ">
                     Anda belum punya akun?
-                    <Link to="/register-worker" className="signup-link mx-2 text-[#FBB017]">
+                    <Link to="/register-company" className="signup-link mx-2 text-[#FBB017]">
                       Daftar disini
                     </Link>
                   </p>

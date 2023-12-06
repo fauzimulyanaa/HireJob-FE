@@ -2,7 +2,7 @@ import Logo from "../../assets/img/logo-putih.png";
 
 export default function Footer() {
   return (
-    <footer className="w-screen h-[300px] bg-[#5E50A1] overflow-hidden">
+    <footer className="w-full h-[300px] bg-[#5E50A1] overflow-hidden">
       <div className="container-footer w-[1200px]  p-10  flex flex-col justify-center m-auto">
         <img src={Logo} alt="logo" className="w-28" />
         <p className="mt-10 w-[330px] mb-7 text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>

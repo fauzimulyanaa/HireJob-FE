@@ -27,7 +27,7 @@ export default function Navbar() {
       if (result.isConfirmed) {
         dispatch(logoutAction());
 
-        navigate("/login-worker");
+        navigate("/login-company");
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         return;
       }
