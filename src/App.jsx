@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-// <<<<<<< HEAD
->>>>>>> 81b626d4b45fa6f640b540d50fafda8a6fb2f131
 import { Navigate, BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RegisterCompany from "./pages/AuthCompany/Register";
 import LoginCompany from "./pages/AuthCompany/Login";
@@ -16,20 +12,11 @@ import PageResetPassword from "./pages/ResetPassword/PageResetPassword";
 import PageSendOtp from "./pages/ResetPassword/PageSendOtp";
 import PageNewPassword from "./pages/ResetPassword/PageNewPassword";
 import PageHomeUtama from "./pages/HomeUtama/PageHomeUtama";
-<<<<<<< HEAD
 import HirePageWork from "./pages/HiringPage/PageHiring";
-
-=======
-// =======
->>>>>>> 81b626d4b45fa6f640b540d50fafda8a6fb2f131
 const App = () => {
   return (
     <Router>
       <Routes>
-<<<<<<< HEAD
-=======
-{/* <<<<<<< HEAD */}
->>>>>>> 81b626d4b45fa6f640b540d50fafda8a6fb2f131
         <Route path="/" element={<Navigate to="/home" replace={true} />} />
         <Route path="/register-company" element={<RegisterCompany />} />
         <Route path="/login-company" element={<LoginCompany />} />
@@ -49,26 +36,6 @@ const App = () => {
         <Route path="/new-password" element={<PageNewPassword />} />
         <Route path="/hires-pages" element={<HirePageWork />} />
         <Route path="/home" element={<PageHomeUtama />} />
-<<<<<<< HEAD
-=======
-{/* ======= */}
-        <Route path='/' element={<Navigate to='/home' replace={true} />} />
-        <Route path='/register-company' element={<RegisterCompany />} />
-        <Route path='/login-company' element={<LoginCompany />} />
-        <Route path='/register-worker' element={<RegisterWorker />} />
-        <Route path='/login-worker' element={<LoginWorker />} />
-        <Route path='/edit-company' element={<PageEditCompany />} />
-        <Route path='/edit-worker' element={<PageEditWorker />} />
-        <Route path='/landing-home' element={<HomeLandingPage />} />
-        <Route path='/profile/:id' element={<ProfileWorker />} />
-        <Route path='/chat-page' element={<PagesChat />} />
-        <Route path='/profile' element={<ProfileWorker />} />
-        <Route path='/reset-password' element={<PageResetPassword />} />
-        <Route path='/send-otp' element={<PageSendOtp />} />
-        <Route path='/new-password' element={<PageNewPassword />} />
-        <Route path='/home' element={<PageHomeUtama />} />
-{/* >>>>>>> 396eaa4e9897bb684761541cbf612c941b3301e2 */}
->>>>>>> 81b626d4b45fa6f640b540d50fafda8a6fb2f131
       </Routes>
     </Router>
   );

@@ -8,7 +8,7 @@ export default function Hires(){
         <>
         <div className="container-full overflow-hidden">
         <NavbarHireChat />
-        <div className="container flex m-auto gap-4 py-12">
+        <div className="container flex m-auto gap-4 py-12 sm:flex-wrap justify-center">
         <Hiring />
         <HireInput />
         </div>
