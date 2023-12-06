@@ -202,9 +202,9 @@ export default function EditPhotoProfile() {
   useEffect(() => {
     dispatch(getDetailProfileWorker(AuthLoginWorker.data?.id_user));
     dispatch(getSkillByIdWorker(AuthLoginWorker.data?.id_user));
-    dispatch(getPortfolioWorkerAction());
+    dispatch(getPortfolioWorkerAction(AuthLoginWorker.data?.id_user));
     dispatch(getDetailPortfolioWorker(null));
-    dispatch(getExperienceWorkerAction());
+    dispatch(getExperienceWorkerAction(AuthLoginWorker.data?.id_user));
   }, []);
 
   useEffect(() => {

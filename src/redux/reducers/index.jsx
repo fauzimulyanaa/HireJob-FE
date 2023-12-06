@@ -22,6 +22,7 @@ import addExperienceWorker from './AddExperienceWorker';
 import deleteExperienceWorker from './DeleteExperienceWorker';
 import showDetailExperienceWorker from './ShowDetailExperienceWorker';
 import updateExperienceWorker from './UpdateExperienceWorker';
+import showDetailPortfolioWorkerForCompany from './ShowDetailWorkerForCompany';
 
 const rootReducers = combineReducers({
   AuthRegisterCompany,
@@ -47,6 +48,7 @@ const rootReducers = combineReducers({
   deleteExperienceWorker,
   showDetailExperienceWorker,
   updateExperienceWorker,
+  showDetailPortfolioWorkerForCompany,
 });
 
 export default rootReducers;
