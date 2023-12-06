@@ -1,17 +1,20 @@
 import Logo from "../../assets/img/logo.png";
 import Email from "../../assets/img/email.svg";
 import Bell from "../../assets/img/bell.svg";
-import Profile from "../../assets/img/profile.png";
+import Profile from "../../assets/img/profile.png"; 
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <>
       <section>
-        <nav className="bg-white w-full">
+        <nav className="bg-white w-full ">
           <div className="content flex justify-between items-center mx-10 px-9 py-6">
-            <div className="logo">
-              <img src={Logo} />
-            </div>
+        
+            <Link to="/landing-home" className=" mx-2 ">
+            <img src={Logo} />
+                </Link>
+
             <div className="icon flex  items-center space-x-5">
               <a href="">
                 <img src={Bell} />

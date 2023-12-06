@@ -6,12 +6,15 @@ import LoginWorker from "./pages/AuthWorker/Login";
 import PageEditCompany from "./pages/PageEditCompany/PageEditCompany";
 import HomeLandingPage from "./pages/HomePage/PagesLanding";
 import PageEditWorker from "./pages/PageEditWorker/PageEditWorker";
+
 import PagesChat from "./pages/ChatTable/PagesChat";
+
 import ProfileWorker from "./pages/ProfileWorker/Profile";
 import PageResetPassword from "./pages/ResetPassword/PageResetPassword";
 import PageSendOtp from "./pages/ResetPassword/PageSendOtp";
 import PageNewPassword from "./pages/ResetPassword/PageNewPassword";
 import PageHomeUtama from "./pages/HomeUtama/PageHomeUtama";
+import HirePageWork from "./pages/HiringPage/PageHiring";
 
 const App = () => {
   return (
@@ -28,9 +31,12 @@ const App = () => {
         <Route path="/profile/:id" element={<ProfileWorker />} />
         <Route path="/chat-page" element={<PagesChat />} />
         <Route path="/profile" element={<ProfileWorker />} />
+        <Route path="/profile/:id" element={<ProfileWorker />} />
+        <Route path="/chat-page" element={<PagesChat />} />
         <Route path="/reset-password" element={<PageResetPassword />} />
         <Route path="/send-otp" element={<PageSendOtp />} />
         <Route path="/new-password" element={<PageNewPassword />} />
+        <Route path="/hires-pages" element={<HirePageWork />} />
         <Route path="/home" element={<PageHomeUtama />} />
       </Routes>
     </Router>

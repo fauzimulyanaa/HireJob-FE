@@ -23,7 +23,7 @@ export default function NavbarHome() {
                 <img className="rounded-full" src={Profile} />
               </div>
               </div>
-              <Link to="login-company" className="bg-red-500 text-white rounded-md p-2 ">
+              <Link to="/login-worker" className="bg-red-500 text-white rounded-md p-2 ">
                 Logout
               </Link>
             </div>
