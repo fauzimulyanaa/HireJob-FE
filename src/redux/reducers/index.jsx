@@ -23,6 +23,10 @@ import deleteExperienceWorker from './DeleteExperienceWorker';
 import showDetailExperienceWorker from './ShowDetailExperienceWorker';
 import updateExperienceWorker from './UpdateExperienceWorker';
 import showDetailPortfolioWorkerForCompany from './ShowDetailWorkerForCompany';
+import listChatCompany from './ListChatCompany';
+import detailChat from './detailChat';
+import sendChat from './SendChat';
+import listChatWorker from './ListChatWorker';
 
 const rootReducers = combineReducers({
   AuthRegisterCompany,
@@ -49,6 +53,10 @@ const rootReducers = combineReducers({
   showDetailExperienceWorker,
   updateExperienceWorker,
   showDetailPortfolioWorkerForCompany,
+  listChatCompany,
+  detailChat,
+  sendChat,
+  listChatWorker,
 });
 
 export default rootReducers;
