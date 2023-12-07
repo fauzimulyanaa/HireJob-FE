@@ -1,3 +1,4 @@
+
 import { combineReducers } from 'redux';
 import AuthRegisterCompany from './AuthRegisterCompany';
 import AuthLoginCompany from './AuthLoginCompany';
@@ -34,6 +35,7 @@ import verifyOtpCompany from './VerifyOtpCompany';
 import verifyOtpWorker from './VerifyOtpWorker';
 import updatePasswordCompany from './UpdatePasswordCompany';
 import updatePasswordWorker from './UpdatePasswordWorker';
+
 
 const rootReducers = combineReducers({
   AuthRegisterCompany,
