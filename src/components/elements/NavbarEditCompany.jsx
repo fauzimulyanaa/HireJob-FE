@@ -1,7 +1,7 @@
 import Logo from "../../assets/img/logo.png";
 import Email from "../../assets/img/email.svg";
 import Bell from "../../assets/img/bell.svg";
-import Profile from "../../assets/img/profile.png";
+// import Profile from "../../assets/img/profile.png";
 import HamburgerIcon from "../../assets/img/hmburger-menu.png";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -58,12 +58,14 @@ export default function Navbar() {
                       <span className="ml-2">Notifications</span>
                     </a>
                     <a href="" className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
-                      <img src={Email} alt="Email" className="w-6 h-6" />
+                      <Link to="/chat-page" className="flex items-center">
+                        <img src={Email} alt="Email" className="w-6 h-6" />
+                      </Link>
                       <span className="ml-2">Messages</span>
                     </a>
                     <div className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
                       <div className="profiles">
-                        <img className="rounded-full w-6 h-6" src={Profile} alt="Profile" />
+                        <img className="rounded-full" src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={"50px"} height={"50px"} alt="Profile" />
                       </div>
                       <span className="ml-2">Profile</span>
                     </div>
