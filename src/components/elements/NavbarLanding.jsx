@@ -50,30 +50,38 @@ export default function NavbarHome() {
             <Link to={userLogin == 'company' ? '/landing-home' : '/edit-worker'} className=' mx-2 '>
               <img src={Logo} />
             </Link>
-            <div className='icon flex items-center space-x-3 md:space-x-5 relative'>
-              <button className='md:hidden' onClick={() => setMenuOpen(!isMenuOpen)}>
-                <img src={HamburgerIcon} alt='Hamburger Icon' />
+
+            <div className="icon flex items-center space-x-3 md:space-x-5 relative">
+              <button className="md:hidden" onClick={() => setMenuOpen(!isMenuOpen)}>
+                <img src={HamburgerIcon} alt="Hamburger Icon" className="w-[30px]" />
               </button>
               {isMenuOpen && (
-                <div className='md:hidden absolute top-full left-[-330px] right-[-30px]   bg-white rounded-md shadow-md mt-2 transition duration-300 ease-in-out w-[4  00px] '>
-                  <div className='p-4 space-y-2'>
-                    <a href='' className='flex items-center'>
-                      <img src={Bell} alt='Bell' className='w-6 h-6' />
-                      <span className='ml-2'>Notifications</span>
+                <div className="md:hidden absolute top-full left-[-460px] right-[-24px]   bg-white  shadow-md mt-2 transition duration-300 ease-in-out p-6 z-50">
+                  <div className="p-4 space-y-2 ">
+                    <a href="" className="flex items-center border-b-2 border-slate-200 pb-5 pt-5">
+                      <img src={Bell} alt="Bell" className="w-6 h-6" />
+                      <span className="ml-2">Notifications</span>
                     </a>
-                    <a href='' className='flex items-center'>
-                      <Link to={'/chat-page'}>
+                    <a href="" className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
+                      <Link to={"/chat-page"}>
+
                         <img src={Email} />
                       </Link>
                       <span className='ml-2'>Messages</span>
                     </a>
+
                     <div className='flex items-center'>
                       <div className='profiles'>
-                        <img className='rounded-full' src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={'50px'} height={'50px'} onClick={toEditProfilePage} />
+                        <img className='rounded-full' src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={'50px'} height={'50px'} onClick={toEditProfilePage} 
+    
                       </div>
                       <span className='ml-2'>Profile</span>
                     </div>
-                    <button className='bg-red-500 text-white rounded-md p-2' onClick={handleLogout}>
+
+
+
+                    <button className="bg-red-500 text-white rounded-md p-2 w-full " onClick={handleLogout}>
+
                       Logout
                     </button>
                   </div>
@@ -84,12 +92,16 @@ export default function NavbarHome() {
                 <a href='' className='flex items-center'>
                   <img src={Bell} alt='Bell' className='w-6 h-6' />
                 </a>
-                <Link to={'/chat-page'}>
-                  <img src={Email} />
-                </Link>
-                <div className='flex items-center'>
-                  <div className='profiles'>
-                    <img className='rounded-full' src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={'50px'} height={'50px'} onClick={toEditProfilePage} />
+
+                <a href="" className="flex items-center">
+                  <Link to={"/chat-page"}>
+                    <img src={Email} />
+                  </Link>
+                </a>
+                <div className="flex items-center">
+                  <div className="profiles">
+                    <img className="rounded-full" src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={"50px"} height={"50px"} onClick={toEditProfilePage} />
+
                   </div>
                 </div>
                 <button className='bg-red-500 text-white rounded-md p-2' onClick={handleLogout}>
