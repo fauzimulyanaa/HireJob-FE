@@ -1,30 +1,25 @@
-
-
-export default function NavbarHireChat() {
-  const userLogin = localStorage.getItem('status');
-  const AuthLoginCompany = useSelector((state) => state.AuthLoginCompany);
-  const AuthLoginWorker = useSelector((state) => state.AuthLoginWorker);
-  const navigate = useNavigate();
-
-  const toEditProfilePage = () => {
-    navigate(userLogin == 'company' ? '/edit-company' : '/edit-worker');
-
 import Logo from "../../assets/img/logo.png";
 import Email from "../../assets/img/email.svg";
 import Bell from "../../assets/img/bell.svg";
 import HamburgerIcon from "../../assets/img/hmburger-menu.png";
-import Profile from "../../assets/img/profile.png";
+// import Profile from "../../assets/img/profile.png";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../redux/actions/AuthLogout";
 import { useState } from "react";
 
-export default function NavbarHome() {
+export default function NavbarHireChat() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const userLogin = localStorage.getItem("status");
+  const AuthLoginCompany = useSelector((state) => state.AuthLoginCompany);
+  const AuthLoginWorker = useSelector((state) => state.AuthLoginWorker);
 
+  const toEditProfilePage = () => {
+    navigate(userLogin == "company" ? "/edit-company" : "/edit-worker");
+  };
   const handleLogout = () => {
     Swal.fire({
       icon: "warning",
@@ -43,31 +38,15 @@ export default function NavbarHome() {
         return;
       }
     });
-
   };
+
   return (
     <>
       <section>
-        <nav className='bg-white w-screen shadow-md'>
-          <div className='content flex justify-between mx-10 py-3'>
-            <Link to={userLogin == 'company' ? '/landing-home' : '/edit-worker'} className=' mx-2 '>
-              <img src={Logo} />
-            </Link>
-
-            <div className='icon flex space-x-5'>
-              <a href=''>
-                <img src={Bell} />
-              </a>
-              <Link to='/chat-page'>
-                <img src={Email} />
-              </Link>
-              <div className='profiles'>
-                <img className='rounded-full' src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={'50px'} height={'50px'} onClick={toEditProfilePage} />
-
         <nav className="bg-white w-full shadow-md ">
           <div className="content flex justify-between items-center mx-2 md:mx-10 px-4 md:px-9 py-2 md:py-6">
-            <Link to="/landing-home">
-              <img src={Logo} alt="Logo" />
+            <Link to={userLogin == "company" ? "/landing-home" : "/edit-worker"} className=" mx-2 ">
+              <img src={Logo} />
             </Link>
             <div className="icon flex items-center space-x-3 md:space-x-5 relative">
               <button className="md:hidden" onClick={() => setMenuOpen(!isMenuOpen)}>
@@ -86,7 +65,7 @@ export default function NavbarHome() {
                     </a>
                     <div className="flex items-center">
                       <div className="profiles">
-                        <img className="rounded-full w-6 h-6" src={Profile} alt="Profile" />
+                        <img className="rounded-full" src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={"50px"} height={"50px"} onClick={toEditProfilePage} />
                       </div>
                       <span className="ml-2">Profile</span>
                     </div>
@@ -106,13 +85,12 @@ export default function NavbarHome() {
                 </a>
                 <div className="flex items-center">
                   <div className="profiles border-r-2 border-black pr-5">
-                    <img className="rounded-full" src={Profile} alt="Profile" />
+                    <img className="rounded-full" src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={"50px"} height={"50px"} onClick={toEditProfilePage} />
                   </div>
                 </div>
                 <button className="bg-red-500 text-white rounded-md p-2" onClick={handleLogout}>
                   Logout
                 </button>
-
               </div>
             </div>
           </div>
