@@ -5,7 +5,7 @@ import Github from '../../assets/img/github.svg';
 import Gitlab from '../../assets/img/gitlab.svg';
 import Instagram from '../../assets/img/instagram.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getSkillByIdWorker } from '../../redux/actions/Worker';
 import { getDetailProfileWorkerForCompany } from '../../redux/actions/Company';
@@ -15,11 +15,16 @@ export default function CardDetailProfile() {
   const showDetailPortfolioWorkerForCompany = useSelector((state) => state.showDetailPortfolioWorkerForCompany);
   const showSkillByIdWorker = useSelector((state) => state.showSkillByIdWorker);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getDetailProfileWorkerForCompany(id));
     dispatch(getSkillByIdWorker(id));
   }, [dispatch, id]);
+
+  const toHiresPage = () => {
+    navigate(`/hires-pages/${id}`);
+  };
 
   return (
     <section>
@@ -67,7 +72,9 @@ export default function CardDetailProfile() {
                 </div>
               </div>
               <div className='wrapper-btn-hire mt-20'>
-                <button className='text-white bg-[#5E50A1] w-full p-2 rounded-md'>Hire Me</button>
+                <button className='text-white bg-[#5E50A1] w-full p-2 rounded-md' onClick={toHiresPage}>
+                  Hire Me
+                </button>
               </div>
             </div>
           </div>

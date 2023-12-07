@@ -1,9 +1,9 @@
 // import PhotoEdit from '../../assets/img/photoedit.svg';
 import LocationIcon from '../../assets/img/lokasi.svg';
-import Mail from '../../assets/img/mail (4).svg';
-import Github from '../../assets/img/github.svg';
-import Gitlab from '../../assets/img/gitlab.svg';
-import Instagram from '../../assets/img/instagram.svg';
+// import Mail from '../../assets/img/mail (4).svg';
+// import Github from '../../assets/img/github.svg';
+// import Gitlab from '../../assets/img/gitlab.svg';
+// import Instagram from '../../assets/img/instagram.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
