@@ -37,7 +37,7 @@ export const getDetailChatAction = (form) => async (dispatch, getState) => {
   }
 };
 
-export const postChatAction = (form, setFormChat) => async (dispatch, getState) => {
+export const postChatAction = (form, navigate, setFormChat) => async (dispatch, getState) => {
   let postChatUrl = `/chat`;
   try {
     dispatch({ type: 'POST_CHAT_PENDING' });
@@ -50,13 +50,14 @@ export const postChatAction = (form, setFormChat) => async (dispatch, getState) 
       },
     });
     dispatch({ payload: result.data, type: 'POST_CHAT_SUCCESS' });
+    navigate('/chat-page');
     dispatch(getDetailChatAction(form));
     setFormChat({
       ...form,
       message_detail: '',
     });
   } catch (err) {
-    dispatch({ payload: err.response.data.message, type: 'POST_CHAT_ERROR' });
+    dispatch({ payload: err?.response?.data?.message, type: 'POST_CHAT_ERROR' });
   }
 };
 
