@@ -28,6 +28,15 @@ const getDetailChatReducers = (state = initialState, action) => {
       isError: true,
       errorMessage: action.payload,
     };
+  } else if (action.type === 'AUTH_LOGOUT') {
+    return {
+      ...state,
+      data: null,
+      isError: false,
+      isSuccess: false,
+      isLoading: false,
+      errorMessage: '',
+    };
   } else {
     return state;
   }
