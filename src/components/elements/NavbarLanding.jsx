@@ -1,41 +1,41 @@
-import Logo from "../../assets/img/logo.png";
-import Email from "../../assets/img/email.svg";
-import Bell from "../../assets/img/bell.svg";
-import HamburgerIcon from "../../assets/img/hmburger-menu.png";
+import Logo from '../../assets/img/logo.png';
+import Email from '../../assets/img/email.svg';
+import Bell from '../../assets/img/bell.svg';
+import HamburgerIcon from '../../assets/img/hmburger-menu.png';
 // import Profile from "../../assets/img/profile.png";
-import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { useDispatch, useSelector } from "react-redux";
-import { logoutAction } from "../../redux/actions/AuthLogout";
-import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutAction } from '../../redux/actions/AuthLogout';
+import { useState } from 'react';
 
 export default function NavbarHome() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const userLogin = localStorage.getItem("status");
+  const userLogin = localStorage.getItem('status');
   const AuthLoginCompany = useSelector((state) => state.AuthLoginCompany);
   const AuthLoginWorker = useSelector((state) => state.AuthLoginWorker);
 
   const toEditProfilePage = () => {
-    navigate(userLogin == "company" ? "/edit-company" : "/edit-worker");
+    navigate(userLogin == 'company' ? '/edit-company' : '/edit-worker');
   };
 
   const handleLogout = () => {
     Swal.fire({
-      icon: "warning",
-      title: "Confirmation",
-      text: "Are you sure you want to logout?",
+      icon: 'warning',
+      title: 'Confirmation',
+      text: 'Are you sure you want to logout?',
       showCancelButton: true,
-      confirmButtonText: "Yes",
-      cancelButtonText: "No",
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(logoutAction());
 
-        navigate("/login-company");
+        navigate('/');
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         return;
       }
@@ -45,11 +45,12 @@ export default function NavbarHome() {
   return (
     <>
       <section>
-        <nav className="bg-white w-full ">
-          <div className="content flex justify-between items-center mx-2 md:mx-10 px-4 md:px-9 py-2 md:py-6">
-            <Link to={userLogin == "company" ? "/landing-home" : "/edit-worker"} className=" mx-2 ">
+        <nav className='bg-white w-full '>
+          <div className='content flex justify-between items-center mx-2 md:mx-10 px-4 md:px-9 py-2 md:py-6'>
+            <Link to={userLogin == 'company' ? '/landing-home' : '/edit-worker'} className=' mx-2 '>
               <img src={Logo} />
             </Link>
+
             <div className="icon flex items-center space-x-3 md:space-x-5 relative">
               <button className="md:hidden" onClick={() => setMenuOpen(!isMenuOpen)}>
                 <img src={HamburgerIcon} alt="Hamburger Icon" className="w-[30px]" />
@@ -63,28 +64,35 @@ export default function NavbarHome() {
                     </a>
                     <a href="" className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
                       <Link to={"/chat-page"}>
+
                         <img src={Email} />
                       </Link>
-                      <span className="ml-2">Messages</span>
+                      <span className='ml-2'>Messages</span>
                     </a>
-                    <div className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
-                      <div className="profiles">
-                        <img className="rounded-full" src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={"50px"} height={"50px"} onClick={toEditProfilePage} />
+
+                    <div className='flex items-center'>
+                      <div className='profiles'>
+                        <img className='rounded-full' src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={'50px'} height={'50px'} onClick={toEditProfilePage} 
+    
                       </div>
-                      <span className="ml-2">Profile</span>
+                      <span className='ml-2'>Profile</span>
                     </div>
 
+
+
                     <button className="bg-red-500 text-white rounded-md p-2 w-full " onClick={handleLogout}>
+
                       Logout
                     </button>
                   </div>
                 </div>
               )}
 
-              <div className="hidden md:flex md:space-x-5">
-                <a href="" className="flex items-center">
-                  <img src={Bell} alt="Bell" className="w-6 h-6" />
+              <div className='hidden md:flex md:space-x-5'>
+                <a href='' className='flex items-center'>
+                  <img src={Bell} alt='Bell' className='w-6 h-6' />
                 </a>
+
                 <a href="" className="flex items-center">
                   <Link to={"/chat-page"}>
                     <img src={Email} />
@@ -93,9 +101,10 @@ export default function NavbarHome() {
                 <div className="flex items-center">
                   <div className="profiles">
                     <img className="rounded-full" src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={"50px"} height={"50px"} onClick={toEditProfilePage} />
+
                   </div>
                 </div>
-                <button className="bg-red-500 text-white rounded-md p-2" onClick={handleLogout}>
+                <button className='bg-red-500 text-white rounded-md p-2' onClick={handleLogout}>
                   Logout
                 </button>
               </div>
@@ -104,9 +113,9 @@ export default function NavbarHome() {
         </nav>
       </section>
       <section>
-        <div className="bg-violet-700 w-screen">
-          <div className="title p-4 mx-10 py-3 overflow-hidden">
-            <p className="text-white font-bold text-2xl">Top Jobs</p>
+        <div className='bg-violet-700 w-screen'>
+          <div className='title p-4 mx-10 py-3 overflow-hidden'>
+            <p className='text-white font-bold text-2xl'>Top Jobs</p>
           </div>
         </div>
       </section>
