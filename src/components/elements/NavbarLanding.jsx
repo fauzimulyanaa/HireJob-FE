@@ -35,7 +35,7 @@ export default function NavbarHome() {
       if (result.isConfirmed) {
         dispatch(logoutAction());
 
-        navigate("/login-company");
+        navigate("/");
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         return;
       }
@@ -50,6 +50,7 @@ export default function NavbarHome() {
             <Link to={userLogin == "company" ? "/landing-home" : "/edit-worker"} className=" mx-2 ">
               <img src={Logo} />
             </Link>
+
             <div className="icon flex items-center space-x-3 md:space-x-5 relative">
               <button className="md:hidden" onClick={() => setMenuOpen(!isMenuOpen)}>
                 <img src={HamburgerIcon} alt="Hamburger Icon" className="w-[30px]" />
@@ -67,7 +68,8 @@ export default function NavbarHome() {
                       </Link>
                       <span className="ml-2">Messages</span>
                     </a>
-                    <div className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
+
+                    <div className="flex items-center">
                       <div className="profiles">
                         <img className="rounded-full" src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={"50px"} height={"50px"} onClick={toEditProfilePage} />
                       </div>
@@ -85,6 +87,7 @@ export default function NavbarHome() {
                 <a href="" className="flex items-center">
                   <img src={Bell} alt="Bell" className="w-6 h-6" />
                 </a>
+
                 <a href="" className="flex items-center">
                   <Link to={"/chat-page"}>
                     <img src={Email} />

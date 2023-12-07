@@ -33,7 +33,7 @@ export default function NavbarHireChat() {
       if (result.isConfirmed) {
         dispatch(logoutAction());
 
-        navigate("/login-company");
+        navigate("/");
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         return;
       }
@@ -60,9 +60,7 @@ export default function NavbarHireChat() {
                       <span className="ml-2">Notifications</span>
                     </a>
                     <a href="" className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
-                      <Link to={"/chat-page"}>
-                        <img src={Email} />
-                      </Link>
+                      <img src={Email} alt="Email" className="w-6 h-6" />
                       <span className="ml-2">Messages</span>
                     </a>
                     <div className="flex items-center  border-b-2 border-slate-200 pb-5 pt-5">
@@ -84,12 +82,10 @@ export default function NavbarHireChat() {
                   <img src={Bell} alt="Bell" className="w-6 h-6" />
                 </a>
                 <a href="" className="flex items-center">
-                  <Link to={"/chat-page"}>
-                    <img src={Email} />
-                  </Link>
+                  <img src={Email} alt="Email" className="w-6 h-6" />
                 </a>
                 <div className="flex items-center">
-                  <div className="profiles">
+                  <div className="profiles border-r-2 border-black pr-5">
                     <img className="rounded-full" src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={"50px"} height={"50px"} onClick={toEditProfilePage} />
                   </div>
                 </div>
