@@ -84,9 +84,11 @@ export default function NavbarHome() {
                 <a href="" className="flex items-center">
                   <img src={Bell} alt="Bell" className="w-6 h-6" />
                 </a>
-                <Link to={"/chat-page"}>
-                  <img src={Email} />
-                </Link>
+                <a href="" className="flex items-center">
+                  <Link to={"/chat-page"}>
+                    <img src={Email} />
+                  </Link>
+                </a>
                 <div className="flex items-center">
                   <div className="profiles">
                     <img className="rounded-full" src={AuthLoginCompany?.data?.photo || AuthLoginWorker?.data?.photo} width={"50px"} height={"50px"} onClick={toEditProfilePage} />
