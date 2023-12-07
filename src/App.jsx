@@ -1,4 +1,4 @@
-import { Navigate, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Navigate, BrowserRouter as Router, Route, Routes, HashRouter } from 'react-router-dom';
 import RegisterCompany from './pages/AuthCompany/Register';
 import LoginCompany from './pages/AuthCompany/Login';
 import RegisterWorker from './pages/AuthWorker/Register';
@@ -18,7 +18,7 @@ import HirePageWork from './pages/HiringPage/PageHiring';
 
 const App = () => {
   return (
-    <Router>
+    <HashRouter>
       <Routes>
         <Route path='/' element={<Navigate to='/home' replace={true} />} />
         <Route path='/register-company' element={<RegisterCompany />} />
@@ -39,7 +39,7 @@ const App = () => {
         <Route path='/hires-pages/:id' element={<HirePageWork />} />
         <Route path='/home' element={<PageHomeUtama />} />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 };
 
